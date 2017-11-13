@@ -59,5 +59,6 @@ typings/
 
 # Webstorm profiles
 */.idea
-
+.idea
 21  LICENSE
+/build/
