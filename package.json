@@ -3,21 +3,26 @@
   "version": "0.0.1",
   "description": "sandbox",
   "main": "index.js",
-  "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Patrik Cyprian",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "webpack": "^3.3.0"
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.11.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.4.0",
+    "webpack": "^3.8.1"
   },
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
+  },
+  "scripts": {
+    "build": "webpack",
+    "build-production": "set NODE_ENV=production&& webpack",
+    "start": "start app.html & webpack -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

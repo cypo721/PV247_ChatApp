@@ -7,4 +7,4 @@ class MyComponent extends React.Component {
     }
 }
 
-ReactDom.render(<MyComponent/>, document.getElementById('app'))
+ReactDom.render(<MyComponent/>, document.getElementById('app'));

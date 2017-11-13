@@ -1,3 +1,9 @@
+/* eslint-disable no-undef */
+const webpack = require('webpack');
+
+const productionEnv = 'production';
+const env = process.env.NODE_ENV;
+
 const babelLoader = {
     loader: 'babel-loader',
     options: {
@@ -9,7 +15,18 @@ const babelLoader = {
     }
 };
 
-const javascriptLoaders = [babelLoader];
+const eslintLoader = {
+    loader: 'eslint-loader',
+    options: {},
+};
+
+const javascriptLoaders = [babelLoader, eslintLoader];
+
+const plugins = [];
+
+if (env === productionEnv) {
+    plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
 
 module.exports = {
         entry: './src/app.jsx',
@@ -34,5 +51,7 @@ module.exports = {
                 use: javascriptLoaders
             }
                 ]
-        }
+        },
+    devtool: env === productionEnv ? '' : 'source-map',
+    plugins: plugins
 };
