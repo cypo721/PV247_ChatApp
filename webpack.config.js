@@ -29,7 +29,7 @@ if (env === productionEnv) {
 }
 
 module.exports = {
-        entry: './src/app.jsx',
+        entry: ['babel-polyfill', './src/app.jsx'],
         output: {
             path: __dirname + '/build',
                 filename: 'app.js'
@@ -74,6 +74,16 @@ module.exports = {
                     },
                 }
             },
+            {
+                test: /\.(html|jpg|png|ico)/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[ext]',
+                        context: 'static',
+                    }
+                },
+            }
             ]
         },
     devtool: env === productionEnv ? '' : 'source-map',
