@@ -3,7 +3,25 @@ import React from 'react';
 
 class MyComponent extends React.Component {
     render() {
-        return (<h1>It works!</h1>)
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-xs-12">
+                        <h1>TODO List</h1>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-xs-12">To be implemented</div>
+                </div>
+                <div className="row">
+                    <div className="col-xs-12">
+                        <h5>PV247{' '}
+                            <small>2017</small>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
 
