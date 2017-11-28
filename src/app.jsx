@@ -2,29 +2,19 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 import ReactDom from 'react-dom';
 import React from 'react';
+import { Provider } from 'react-redux';
+import { ConnectedRouter} from 'connected-react-router';
+import { LayoutSelector } from './containers-redux/LayoutSelector.jsx';
+import { createHistory } from './utils/createHistory';
+import { createStore } from './utils/createStore';
 
-class MyComponent extends React.Component {
-    render() {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-xs-12">
-                        <h1>TODO List</h1>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-xs-12">To be implemented</div>
-                </div>
-                <div className="row">
-                    <div className="col-xs-12">
-                        <h5>PV247{' '}
-                            <small>2017</small>
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
+const history = createHistory();
+const store = createStore(history);
 
-ReactDom.render(<MyComponent/>, document.getElementById('app'));
+ReactDom.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <LayoutSelector />
+        </ConnectedRouter>
+    </Provider>,
+    document.getElementById('app'));

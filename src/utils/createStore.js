@@ -9,9 +9,9 @@ import {
     routerMiddleware
 } from 'connected-react-router';
 import { app } from '../reducers/app';
-import { getInitialState } from './geInitialState';
 
-const thunk = require('redux-thunk').default;
+import thunk from 'redux-thunk';
+import {getInitialState} from './geInitialState';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,5 +23,5 @@ export const createStore = (history) => {
         connectRouter(history)(app),
         getInitialState(),
         composeEnhancers(applyMiddleware(...middleware)
-    ));
+        ));
 };

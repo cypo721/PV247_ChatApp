@@ -9,9 +9,9 @@ const babelLoader = {
     options: {
         presets: [['env', {
             targets: {
-                    browsers: ['last 2 versions', 'not ie <= 11']
-                }
-        }]]
+                browsers: ['last 2 versions', 'not ie <= 11']
+            }
+        }], ['stage-2'  ]]
     }
 };
 
@@ -29,13 +29,13 @@ if (env === productionEnv) {
 }
 
 module.exports = {
-        entry: ['babel-polyfill', './src/app.jsx'],
-        output: {
-            path: __dirname + '/build',
-                filename: 'app.js'
-        },
+    entry: ['babel-polyfill', './src/app.jsx'],
+    output: {
+        path: __dirname + '/build',
+        filename: 'app.js'
+    },
     module: {
-            rules: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
@@ -84,8 +84,8 @@ module.exports = {
                     }
                 },
             }
-            ]
-        },
+        ]
+    },
     devtool: env === productionEnv ? '' : 'source-map',
     plugins: plugins
 };
