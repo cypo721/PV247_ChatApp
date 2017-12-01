@@ -4,7 +4,7 @@ import { LoginForm } from '../../components/login/LoginForm.jsx';
 import { authenticateUser } from '../../actions/shared/authenticateUser';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onSubmit: () => dispatch(authenticateUser(ownProps.from))
+    onSubmit: (email) => dispatch(authenticateUser(ownProps.from, email))
 });
 
 const enhancer = connect(undefined, mapDispatchToProps);

@@ -15,19 +15,20 @@ import {
     FAILED_AUTHENTICATION_MESSAGE
 } from '../../constants/uiConstants';
 
-export const authenticateUser = (destinationLocation) =>
+export const authenticateUser = (destinationLocation, loginId) =>
     (dispatch) => {
         dispatch(startAuthentication());
 
-        return fetchAuthToken(USER_EMAIL)
+        const login = loginId;
+        return fetchAuthToken(loginId)
             .then((token) => {
                 dispatch(receiveValidToken(token));
-                dispatch(loggedUser(USER_EMAIL));
+                dispatch(loggedUser(loginId));
                 dispatch(push(destinationLocation));
 
                 localStorage.setItem(keys.SHARED_TOKEN, JSON.stringify(token));
                 localStorage.setItem(keys.SHARED_TOKEN_TIMESTAMP, JSON.stringify(new Date().getTime()));
-                localStorage.setItem(keys.LOGGED_USER_EMAIL, JSON.stringify(USER_EMAIL));
+                localStorage.setItem(keys.LOGGED_USER_EMAIL, JSON.stringify(loginId));
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failAuthentication(FAILED_AUTHENTICATION_MESSAGE, error));

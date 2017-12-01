@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { uuid } from '../../utils/uuidGenerator';
+import {uuid} from '../../utils/uuidGenerator';
 
 class LoginForm extends React.PureComponent {
     static propTypes = {
@@ -8,11 +8,13 @@ class LoginForm extends React.PureComponent {
     };
 
     componentWillMount() {
-        this.setState(() => ({ componentId: uuid() }));
+        this.setState(() => ({componentId: uuid()}));
     }
 
+    onChangeHandler = (event) => { this.setState({email: event.target.value}); }
+
     render() {
-        const { componentId } = this.state;
+        const {componentId} = this.state;
         const loginId = `${componentId}_login`;
 
         return (
@@ -33,20 +35,23 @@ class LoginForm extends React.PureComponent {
                             type="email"
                             id={loginId}
                             placeholder="undefined@null.zero"
-                            readOnly
+                            value={this.state.email}
+                            onChange={this.onChangeHandler}
                         />
                     </div>
                 </div>
                 <button
                     type="button"
                     className="btn btn-success btn-lg"
-                    onClick={this.props.onSubmit}
+                    onClick={this.onSubmit}
                 >
                     Come on in
                 </button>
             </form>
         );
     }
+
+    onSubmit = () => { this.props.onSubmit(this.state.email); }
 }
 
-export { LoginForm };
+export {LoginForm};
