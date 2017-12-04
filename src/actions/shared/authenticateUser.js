@@ -19,7 +19,6 @@ export const authenticateUser = (destinationLocation, loginId) =>
     (dispatch) => {
         dispatch(startAuthentication());
 
-        const login = loginId;
         return fetchAuthToken(loginId)
             .then((token) => {
                 dispatch(receiveValidToken(token));

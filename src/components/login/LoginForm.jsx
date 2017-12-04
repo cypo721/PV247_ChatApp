@@ -5,10 +5,11 @@ import {uuid} from '../../utils/uuidGenerator';
 class LoginForm extends React.PureComponent {
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
+        onSubmitRegistration: PropTypes.func.isRequired,
     };
 
     componentWillMount() {
-        this.setState(() => ({componentId: uuid()}));
+        this.setState(() => ({componentId: uuid(), email: ''}));
     }
 
     onChangeHandler = (event) => { this.setState({email: event.target.value}); }
@@ -45,13 +46,22 @@ class LoginForm extends React.PureComponent {
                     className="btn btn-success btn-lg"
                     onClick={this.onSubmit}
                 >
-                    Come on in
+                    Log in
+                </button>
+                &nbsp;&nbsp;&nbsp;
+                <button
+                    type="button"
+                    className="btn btn-success btn-lg"
+                    onClick={this.onSubmitRegistration}
+                >
+                    Register new account
                 </button>
             </form>
         );
     }
 
     onSubmit = () => { this.props.onSubmit(this.state.email); }
+    onSubmitRegistration = () => { this.props.onSubmitRegistration(this.state.email); }
 }
 
 export {LoginForm};

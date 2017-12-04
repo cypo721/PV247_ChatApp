@@ -5,7 +5,6 @@ import {
     startFetchingProfileAvatar
 } from './actionCreators';
 import {
-    USER_EMAIL,
     createApiUserUri
 } from '../../constants/api';
 import {
@@ -26,7 +25,7 @@ export const fetchUserDetails = () =>
         dispatch(startFetchingProfileAvatar());
 
         const authToken = getState().shared.token;
-        const requestUri = createApiUserUri(USER_EMAIL);
+        const requestUri = createApiUserUri(getState().shared.email);
 
         return fetchReceive(requestUri, authToken)
             .then((serverDetails) => dispatch(updateProfileDetails(convertFromServerDetails(serverDetails))))

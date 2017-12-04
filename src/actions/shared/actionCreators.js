@@ -23,6 +23,10 @@ export const startAuthentication = () => ({
     type: actionTypes.SHARED_AUTHENTICATION_STARTED,
 });
 
+export const startRegistration = () => ({
+    type: actionTypes.SHARED_REGISTRATION_STARTED,
+});
+
 export const dismissError = (errorId) => ({
     type: actionTypes.SHARED_DISMISS_ERROR,
     payload: {
@@ -31,3 +35,4 @@ export const dismissError = (errorId) => ({
 });
 
 export const failAuthentication = errorActionFactory(actionTypes.SHARED_AUTHENTICATION_FAILED);
+export const failRegistration = errorActionFactory(actionTypes.SHARED_REGISTRATION_FAILED);

@@ -7,7 +7,6 @@ import {
     failUploadingProfileDetails,
 } from './actionCreators';
 import {
-    USER_EMAIL,
     createApiUserUri
 } from '../../constants/api';
 import { dismissError } from '../shared/actionCreators';
@@ -28,7 +27,7 @@ export const uploadUserDetails = (details) =>
         dispatch(startSubmit(DETAILS_FORM_NAME));
 
         const authToken = getState().shared.token;
-        const requestUri = createApiUserUri(USER_EMAIL);
+        const requestUri = createApiUserUri(getState().shared.email || localStorage.getItem('loggedUserEmail'));
         const serverDetails = convertToServerDetails(details);
 
         try {

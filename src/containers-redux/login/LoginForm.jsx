@@ -2,9 +2,11 @@ import * as PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LoginForm } from '../../components/login/LoginForm.jsx';
 import { authenticateUser } from '../../actions/shared/authenticateUser';
+import {registerUserAccount} from '../../actions/shared/registerUser';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onSubmit: (email) => dispatch(authenticateUser(ownProps.from, email))
+    onSubmit: (email) => dispatch(authenticateUser(ownProps.from, email)),
+    onSubmitRegistration: (email) => dispatch(registerUserAccount(email))
 });
 
 const enhancer = connect(undefined, mapDispatchToProps);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as routes from '../../constants/routes';
 import {LoginForm} from '../../containers-redux/login/LoginForm.jsx';
 import {Loader} from '../../containers-redux/shared/Loader.jsx';
-//import {Errors} from '../../containers-redux/shared/Errors.jsx';
+// import {Errors} from '../../containers-redux/shared/Errors.jsx';
 
 
 class LoginLayout extends React.PureComponent {
@@ -23,6 +23,7 @@ class LoginLayout extends React.PureComponent {
                                 <LoginForm from={originalLocation}/>
                             </div>
                         </Loader>
+                        <br/>
                         <p className="modal-footer">2017</p>
                     </div>
                 </div>
