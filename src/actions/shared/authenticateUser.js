@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 import {
-    dismissError, loggedUser, receiveAppData,
+    dismissError, loggedUser,
     receiveValidToken
 } from './actionCreators';
 import {
@@ -26,7 +26,7 @@ export const authenticateUser = (destinationLocation, loginId) =>
 
                 localStorage.setItem(keys.SHARED_TOKEN, JSON.stringify(token));
                 localStorage.setItem(keys.SHARED_TOKEN_TIMESTAMP, JSON.stringify(new Date().getTime()));
-                localStorage.setItem(keys.LOGGED_USER_EMAIL, JSON.stringify(loginId));
+                localStorage.setItem(keys.LOGGED_USER_EMAIL, loginId);
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failAuthentication(FAILED_AUTHENTICATION_MESSAGE, error));

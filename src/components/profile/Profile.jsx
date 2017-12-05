@@ -22,7 +22,7 @@ class Profile extends React.PureComponent {
     render() {
         return (
             <div>
-                <Header email={JSON.parse(localStorage.getItem('loggedUserEmail'))}/>
+                <Header email={localStorage.getItem('loggedUserEmail')}/>
                 <div className="container">
                     <div className="col-xs-12 col-md-4" key="picture">
                         <Loader stateLoadingSelector={state => state.profile.isFetchingAvatar}>

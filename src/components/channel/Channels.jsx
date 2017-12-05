@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 class Channels extends React.PureComponent {
     constructor(props) {
@@ -7,8 +8,12 @@ class Channels extends React.PureComponent {
     }
 
     static propTypes = {
+        channels: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+        }).isRequired),
         fetchData: PropTypes.func.isRequired,
-        //onSubmitChannel: PropTypes.func.isRequired,
+        onSubmitChannel: PropTypes.func.isRequired,
     };
 
     componentWillMount() {
@@ -27,15 +32,22 @@ class Channels extends React.PureComponent {
                     value={this.state.newChannel}
                     onChange={this.onChangeHandler}
                 />
-                <button className="btn btn-success">Add new channel</button>
+                <button
+                    className="btn btn-success"
+                    onClick={this.onSubmitChannel}
+                >
+                    Add new channel</button>
                 <h4>Channels:</h4>
+                {/*{this.props.channels.map(channel => <p key={channel}># {channel.name}</p>)}*/}
             </div>
         );
     }
 
-    //onSubmitChannel = () => { this.props.onSubmitChannel(this.state.newChannel); }
+    onSubmitChannel = () => { this.props.onSubmitChannel(this.state.newChannel); }
 }
 
+
+//export default connect(mapStateToProps, {})(Channels);
 export {Channels};
 
 const channelStyle = {

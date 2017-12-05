@@ -1,22 +1,27 @@
-import {dismissError} from '../shared/actionCreators';
-import {MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
-import {performAuthorizedRequest} from '../profile/performAuthorizedRequest';
+import {dismissError, receiveAppData} from '../shared/actionCreators';
+import {FAILED_ADDING_CHANNEL, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
+import {failedAddingChannel, startCreatingChannel} from './actionCreators';
+import {uploadChannel} from './uploadChannel';
 
 export const addNewChannel = (channel) =>
-    async (dispatch, getState) => {
+    (dispatch, getState) => {
+
+        dispatch(startCreatingChannel());
 
         const authToken = getState().shared.token;
-        const applicationDetails = convertToServerDetails(details);
-
-        try {
-            await performAuthorizedRequest(dispatch, async () => {
-                const receivedServerDetails = await fetchRequest(requestUri, authToken, serverDetails);
-                const updatedDetails = convertFromServerDetails(receivedServerDetails);
-                return dispatch(updateProfileDetails(updatedDetails));
+        // try {
+        //     await performAuthorizedRequest(dispatch, async () => {
+        //         const receivedServerDetails = await fetchRequest(requestUri, authToken, serverDetails);
+        //         const updatedDetails = convertFromServerDetails(receivedServerDetails);
+        //         return dispatch(updateProfileDetails(updatedDetails));
+        //     });
+        // }
+        return uploadChannel(authToken, getState().shared.email || localStorage.getItem('loggedUserEmail'), channel)
+            .then( (aplication) => {
+                dispatch(receiveAppData(aplication));
+            })
+            .catch((error) => {
+                const dispatchedAction = dispatch(failedAddingChannel(FAILED_ADDING_CHANNEL, error));
+                setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), MILISECONDS_TO_AUTO_DISMISS_ERROR);
             });
-        }
-        catch (error) {
-            const dispatchedAction = dispatch(failUploadingProfileDetails(FAILED_UPDATE_DETAILS_MESSAGE, error));
-            setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), MILISECONDS_TO_AUTO_DISMISS_ERROR);
-        }
     };

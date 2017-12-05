@@ -1,7 +1,7 @@
 import {API_APP_URI} from '../../constants/api';
 import {validateResponse} from '../../utils/api/validateResponse';
 
-export const removeChannel = (token, channelId) =>
+export const uploadChannel = (token, owner, name) =>
     fetch(
         API_APP_URI,
         {
@@ -14,8 +14,15 @@ export const removeChannel = (token, channelId) =>
             body: JSON.stringify(
                 [
                     {
-                        'path': '/channels/' + channelId,
-                        'op': 'remove',
+                        'path': '/channels/-',
+                        'op': 'add',
+                        'value': JSON.stringify({
+                            'name': name,
+                            'customData': {
+                                'owner': owner,
+                                'users': [owner]
+                            }
+                        })
                     }
                 ]
             ),

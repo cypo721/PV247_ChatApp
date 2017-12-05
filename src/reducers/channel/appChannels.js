@@ -1,7 +1,12 @@
 
 import {APP_DATA} from '../../constants/actionTypes';
 
-export const appChannels = (prevState = null, action) => {
+const initialState = {
+    channels: [],
+    id: ''
+}
+
+export const appChannels = (prevState = initialState, action) => {
     switch (action.type) {
         case APP_DATA:
             return action.payload.application;

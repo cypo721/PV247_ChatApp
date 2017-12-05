@@ -31,15 +31,15 @@ class ChannelContainer extends Component {
 }
 
 ChannelContainer.propTypes = {
-    channels: PropTypes.arrayOf(PropTypes.number).isRequired,
+    //channels: PropTypes.arrayOf(PropTypes.number).isRequired,
     channelFetch: PropTypes.func.isRequired,
     email: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
     return {
-        channels: state.channel,
-        email: state.shared.email || JSON.parse(localStorage.getItem('loggedUserEmail'))
+        //channels: state.channel,
+        email: state.shared.email || localStorage.getItem('loggedUserEmail')
     };
 }
 
