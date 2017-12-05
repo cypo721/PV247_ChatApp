@@ -34,5 +34,17 @@ export const dismissError = (errorId) => ({
     }
 });
 
+
+export const startFetchingData = () => ({
+    type: actionTypes.START_FETCHING_APP_DATA,
+});
+
+export const receiveAppData = (application) => ({
+    type: actionTypes.APP_DATA,
+    payload: {
+        application,
+    }
+});
+
 export const failAuthentication = errorActionFactory(actionTypes.SHARED_AUTHENTICATION_FAILED);
 export const failRegistration = errorActionFactory(actionTypes.SHARED_REGISTRATION_FAILED);

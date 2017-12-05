@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as PropTypes from 'prop-types';
-import { channelFetch } from '../actions/channelActionCreators';
+import { channelFetch } from '../actions/channel/actionCreators';
 import Header from '../components/app/Header.jsx';
+import {Channels} from '../containers-redux/channels/Channels.jsx';
 
 class ChannelContainer extends Component {
     constructor(props) {
@@ -18,8 +19,12 @@ class ChannelContainer extends Component {
         return (
             <div>
                 <Header email={this.props.email}/>
-                <button type="button" onClick={this.onClick}>fetch</button>
-                {this.props.channels.map(channel => <p key={channel}>WOHOO {channel}</p>)}
+                <Channels/>
+                <div style={msgStyle} >
+                    test
+                </div>
+                {/*<button type="button" onClick={this.onClick}>fetch</button>*/}
+                {/*{this.props.channels.map(channel => <p key={channel}>WOHOO {channel}</p>)}*/}
             </div>
         );
     }
@@ -42,3 +47,9 @@ export default connect(mapStateToProps, {
     channelFetch
 })(ChannelContainer);
 
+
+const msgStyle = {
+    width: '78%',
+    backgroundColor: 'yellow',
+    height: 'calc(100vh - 87px)',
+};

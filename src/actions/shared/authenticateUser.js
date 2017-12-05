@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 import {
-    dismissError, loggedUser,
+    dismissError, loggedUser, receiveAppData,
     receiveValidToken
 } from './actionCreators';
 import {
@@ -9,7 +9,6 @@ import {
 } from './actionCreators';
 import * as keys from '../../constants/localStorageKeys';
 import { fetchAuthToken } from '../../utils/api/fetchAuthToken';
-import { USER_EMAIL } from '../../constants/api';
 import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR,
     FAILED_AUTHENTICATION_MESSAGE

@@ -25,7 +25,7 @@ export const fetchUserDetails = () =>
         dispatch(startFetchingProfileAvatar());
 
         const authToken = getState().shared.token;
-        const requestUri = createApiUserUri(getState().shared.email);
+        const requestUri = createApiUserUri(getState().shared.email || localStorage.getItem('loggedUserEmail'));
 
         return fetchReceive(requestUri, authToken)
             .then((serverDetails) => dispatch(updateProfileDetails(convertFromServerDetails(serverDetails))))
