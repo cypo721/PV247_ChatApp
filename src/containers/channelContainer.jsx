@@ -17,14 +17,16 @@ class ChannelContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <Header email={this.props.email}/>
-                <Channels/>
-                <div style={msgStyle} >
-                    test
+                <div style={{ display: 'flex'}}>
+                    <Channels/>
+                    <div style={msgStyle} >
+                        test
+                    </div>
+                    {/*<button type="button" onClick={this.onClick}>fetch</button>*/}
+                    {/*{this.props.channels.map(channel => <p key={channel}>WOHOO {channel}</p>)}*/}
                 </div>
-                {/*<button type="button" onClick={this.onClick}>fetch</button>*/}
-                {/*{this.props.channels.map(channel => <p key={channel}>WOHOO {channel}</p>)}*/}
             </div>
         );
     }

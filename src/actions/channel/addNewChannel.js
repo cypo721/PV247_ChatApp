@@ -9,13 +9,7 @@ export const addNewChannel = (channel) =>
         dispatch(startCreatingChannel());
 
         const authToken = getState().shared.token;
-        // try {
-        //     await performAuthorizedRequest(dispatch, async () => {
-        //         const receivedServerDetails = await fetchRequest(requestUri, authToken, serverDetails);
-        //         const updatedDetails = convertFromServerDetails(receivedServerDetails);
-        //         return dispatch(updateProfileDetails(updatedDetails));
-        //     });
-        // }
+
         return uploadChannel(authToken, getState().shared.email || localStorage.getItem('loggedUserEmail'), channel)
             .then( (aplication) => {
                 dispatch(receiveAppData(aplication));
