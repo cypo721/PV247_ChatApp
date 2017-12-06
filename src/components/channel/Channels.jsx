@@ -65,10 +65,6 @@ class Channels extends React.PureComponent {
 
 export {Channels};
 
-const channelItemStyle = {
-
-}
-
 const channelStyle = {
     padding: '10px',
     color: 'white',

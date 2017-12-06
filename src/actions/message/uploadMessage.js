@@ -1,7 +1,7 @@
 import {createApiMessageUri} from '../../constants/api';
 import {validateResponse} from '../../utils/api/validateResponse';
 
-export const uploadMessage = (token, owner, text, channelId) =>
+export const uploadMessage = (token, text, channelId) =>
     fetch(
         createApiMessageUri(channelId),
         {
@@ -14,8 +14,6 @@ export const uploadMessage = (token, owner, text, channelId) =>
             body: JSON.stringify(
                 {
                     'value': text,
-                    'createdBy': owner,
-                    'createdAt': 'test'
                 }
             ),
         })

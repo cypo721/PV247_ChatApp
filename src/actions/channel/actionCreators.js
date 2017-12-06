@@ -1,27 +1,15 @@
 import {
-    CHANNEL_CREATE, CHANNEL_DELETE, CHANNEL_FETCH, CHANNEL_INVATE_USER,
+    CHANNEL_CREATE, CHANNEL_DELETE, CHANNEL_INVATE_USER,
     CHANNEL_UPDATE_NAME, START_CREATING_CHANNEL, START_REMOVING_CHANNEL
 } from '../../constants/actionTypes';
 import * as actionTypes from '../../constants/actionTypes';
 import {errorActionFactory} from '../../utils/errorActionFactory';
-
-export const channelFetch = () => ({
-    type: CHANNEL_FETCH,
-});
 
 export const channelUpdate = (channel) => ({
     type: CHANNEL_UPDATE_NAME,
     payload: {
         channel
     }
-});
-
-export const removeChannel = () => ({
-    type: CHANNEL_DELETE,
-});
-
-export const addNewChannel = () => ({
-    type: CHANNEL_CREATE,
 });
 
 export const invateUser = () => ({

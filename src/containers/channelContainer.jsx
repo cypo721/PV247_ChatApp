@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as PropTypes from 'prop-types';
-import { channelFetch } from '../actions/channel/actionCreators';
 import Header from '../components/app/Header.jsx';
 import {Channels} from '../containers-redux/channels/Channels.jsx';
+import {Messages} from '../containers-redux/messages/MessagesList.jsx';
+import {MessageInput} from '../containers-redux/messages/MessageInput.jsx';
 
 class ChannelContainer extends Component {
     constructor(props) {
         super(props);
-        this.onClick = this.onClick.bind(this);
-    }
-
-    onClick() {
-        this.props.channelFetch();
     }
 
     render() {
@@ -21,8 +17,13 @@ class ChannelContainer extends Component {
                 <Header email={this.props.email}/>
                 <div style={{ display: 'flex'}}>
                     <Channels/>
-                    <div style={msgStyle} >
-                        test
+                    <div style={msgStyle}>
+                        <div style={{ height: '90%'}}>
+                            <Messages/>
+                        </div>
+                        <div style={{ height: '10%'}}>
+                            <MessageInput/>
+                        </div>
                     </div>
                     {/*<button type="button" onClick={this.onClick}>fetch</button>*/}
                     {/*{this.props.channels.map(channel => <p key={channel}>WOHOO {channel}</p>)}*/}
@@ -33,25 +34,22 @@ class ChannelContainer extends Component {
 }
 
 ChannelContainer.propTypes = {
-    //channels: PropTypes.arrayOf(PropTypes.number).isRequired,
-    channelFetch: PropTypes.func.isRequired,
     email: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
     return {
-        //channels: state.channel,
         email: state.shared.email || localStorage.getItem('loggedUserEmail')
     };
 }
 
 export default connect(mapStateToProps, {
-    channelFetch
 })(ChannelContainer);
 
 
 const msgStyle = {
     width: '78%',
-    backgroundColor: 'yellow',
+    backgroundColor: 'ghostwhite',
     height: 'calc(100vh - 87px)',
+    border: '1px',
 };

@@ -5,16 +5,15 @@ import {
 import {errorActionFactory} from '../../utils/errorActionFactory';
 import * as actionTypes from '../../constants/actionTypes';
 
-export const messageFetch = () => ({
-    type: MESSAGE_FETCH,
-});
-
 export const removeMessage = () => ({
     type: MESSAGE_DELETE,
 });
 
-export const addNewMessage = () => ({
+export const addNewMessage = (message) => ({
     type: MESSAGE_CREATE,
+    payload: {
+        message
+    }
 });
 
 export const messageUpvote = () => ({
@@ -26,6 +25,10 @@ export const messageDownvote = () => ({
 });
 
 export const startCreatingMessage = () => ({
+    type: START_CREATING_MESSAGE,
+});
+
+export const startRemovingMessage = () => ({
     type: START_CREATING_MESSAGE,
 });
 
