@@ -38,7 +38,12 @@ class Channels extends React.PureComponent {
                 >
                     Add new channel</button>
                 <h4>Channels:</h4>
-                {/*{this.props.channels.map(channel => <p key={channel}># {channel.name}</p>)}*/}
+                {
+                    this.props.channels.map(channel => <p key={channel.id}># {channel.name}
+                        <button
+                            className="btn btn-danger btn-xs"
+                        ><span className="glyphicon glyphicon-trash"></span></button></p>
+                    )}
             </div>
         );
     }

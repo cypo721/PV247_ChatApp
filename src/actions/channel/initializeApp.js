@@ -4,7 +4,7 @@ import { fetchAppData } from '../../utils/api/fetchAppData';
 
 export const initializeApp = () =>
     (dispatch , getState) => {
-        dispatch(startFetchingData);
+        dispatch(startFetchingData());
         const authToken = getState().shared.token;
 
         return fetchAppData(authToken)
@@ -16,3 +16,17 @@ export const initializeApp = () =>
                 setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), MILISECONDS_TO_AUTO_DISMISS_ERROR);
             });
     };
+
+// export function initializeAppNew() {
+//     return (dispatch, getState) => {
+//         dispatch(startFetchingData());
+//         const authToken = getState().shared.token;
+//         return fetchAppData(authToken)
+//             .then(data => dispatch(receiveAppData(data)))
+//             .catch((error) => {
+//                 const errorAction = failAuthentication(FAILED_FETCH_APP_DATA_MESSAGE, error);
+//                 dispatch(errorAction);
+//                 setTimeout(() => dispatch(dismissError(errorAction.payload.error.id)), MILISECONDS_TO_AUTO_DISMISS_ERROR);
+//             });
+//     };
+// }

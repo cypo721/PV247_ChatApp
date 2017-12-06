@@ -16,13 +16,13 @@ export const uploadChannel = (token, owner, name) =>
                     {
                         'path': '/channels/-',
                         'op': 'add',
-                        'value': JSON.stringify({
+                        'value': {
                             'name': name,
-                            'customData': {
+                            'customData': JSON.stringify({
                                 'owner': owner,
                                 'users': [owner]
-                            }
-                        })
+                            })
+                        }
                     }
                 ]
             ),

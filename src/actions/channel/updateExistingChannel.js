@@ -19,10 +19,10 @@ export const uploadChannel = (token, channel, newName) =>
                         'value': {
                             'id': channel.id,
                             'name': newName,
-                            'customData': {
+                            'customData': JSON.stringify({
                                 'owner': channel.customData.owner,
                                 'users': channel.customData.users,
-                            }
+                            })
                         }
                     }
                 ]

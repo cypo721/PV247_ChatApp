@@ -4,7 +4,7 @@ import {APP_DATA} from '../../constants/actionTypes';
 const initialState = {
     channels: [],
     id: ''
-}
+};
 
 export const appChannels = (prevState = initialState, action) => {
     switch (action.type) {
