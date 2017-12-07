@@ -75,9 +75,10 @@ export {Channels};
 
 const channelStyle = {
     padding: '10px',
+    marginLeft: '15px',
     color: 'white',
     width: '20%',
     backgroundColor: 'black',
-    height: 'calc(100vh - 87px)',
+    height: 'calc(100vh - 67px)',
     display: 'inline-block'
 };

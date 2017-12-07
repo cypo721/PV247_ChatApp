@@ -17,14 +17,19 @@ class ChannelContainer extends Component {
                 <Header email={this.props.email}/>
                 <div style={{ display: 'flex'}}>
                     <Channels/>
-                    <div style={msgStyle}>
-                        <div style={{ height: '90%'}}>
-                            <Messages/>
+                    {JSON.stringify(this.props.actualChannel) == '{}' ?
+                        <div className="text-center" style={msgStyle}>
+                            <h1 style={{marginTop: '120px'}}> Welcome back! Choose channel to chat.</h1>
+                        </div> :
+                        <div style={msgStyle}>
+                            <div style={{height: '90%'}}>
+                                <Messages/>
+                            </div>
+                            <div style={{height: '10%'}}>
+                                <MessageInput/>
+                            </div>
                         </div>
-                        <div style={{ height: '10%'}}>
-                            <MessageInput/>
-                        </div>
-                    </div>
+                    }
                     {/*<button type="button" onClick={this.onClick}>fetch</button>*/}
                     {/*{this.props.channels.map(channel => <p key={channel}>WOHOO {channel}</p>)}*/}
                 </div>
@@ -34,12 +39,14 @@ class ChannelContainer extends Component {
 }
 
 ChannelContainer.propTypes = {
-    email: PropTypes.string.isRequired
+    email: PropTypes.string.isRequired,
+    actualChannel: PropTypes.object
 };
 
 function mapStateToProps(state) {
     return {
-        email: state.shared.email || localStorage.getItem('loggedUserEmail')
+        email: state.shared.email || localStorage.getItem('loggedUserEmail'),
+        actualChannel: state.application.actualChannel || {},
     };
 }
 
@@ -50,6 +57,6 @@ export default connect(mapStateToProps, {
 const msgStyle = {
     width: '78%',
     backgroundColor: 'ghostwhite',
-    height: 'calc(100vh - 87px)',
+    height: 'calc(100vh - 67px)',
     border: '1px',
 };
