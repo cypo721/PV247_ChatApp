@@ -2,6 +2,7 @@ import {dismissError, receiveAppData} from '../shared/actionCreators';
 import {FAILED_ADDING_CHANNEL, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import {failedAddingChannel, startCreatingChannel} from './actionCreators';
 import {uploadChannel} from './uploadChannel';
+import {convertFromServerData} from './applicationData';
 
 export const addNewChannel = (channel) =>
     (dispatch, getState) => {
@@ -12,7 +13,8 @@ export const addNewChannel = (channel) =>
 
         return uploadChannel(authToken, getState().shared.email || localStorage.getItem('loggedUserEmail'), channel)
             .then( (aplication) => {
-                dispatch(receiveAppData(aplication));
+                const convertedData = convertFromServerData(aplication);
+                dispatch(receiveAppData(convertedData));
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failedAddingChannel(FAILED_ADDING_CHANNEL, error));

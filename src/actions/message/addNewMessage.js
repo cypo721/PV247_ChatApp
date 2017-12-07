@@ -1,11 +1,10 @@
-import {dismissError, receiveAppData} from '../shared/actionCreators';
+import {dismissError} from '../shared/actionCreators';
 import {
-    FAILED_ADDING_CHANNEL, FAILED_ADDING_MESSAGE,
+    FAILED_ADDING_MESSAGE,
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
-import {failedAddingMessage, startCreatingMessage} from './actionCreators';
+import {addCreatedMessage, failedAddingMessage, startCreatingMessage} from './actionCreators';
 import {uploadMessage} from './uploadMessage';
-import {prepareMessagesList} from './prepareMessagesList';
 
 export const addNewMessage = (message) =>
     (dispatch, getState) => {
@@ -17,8 +16,7 @@ export const addNewMessage = (message) =>
 
         return uploadMessage(authToken, message, actualChannel)
             .then( (newMessage) => {
-                getState().application.messages.push[newMessage];
-                //dispatch(prepareMessagesList(actualChannel));
+                dispatch(addCreatedMessage(newMessage));
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failedAddingMessage(FAILED_ADDING_MESSAGE, error));

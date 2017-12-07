@@ -18,6 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const stateEnhancer = connect(mapStateToProps, mapDispatchToProps);
-const connectedComponent = stateEnhancer(Channels);
+const   connectedComponent = stateEnhancer(Channels);
 
 export { connectedComponent as Channels };

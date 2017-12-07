@@ -26,7 +26,10 @@ class MessageInput extends React.PureComponent {
         );
     }
 
-    onSubmit = () => { this.props.onSubmit(this.state.message); }
+    onSubmit = () => {
+        this.props.onSubmit(this.state.message);
+        this.setState({message: ''});
+    }
 }
 
 export {MessageInput};
@@ -36,5 +39,8 @@ const areaStyle = {
     height: '99%',
     borderRadius: '10px',
     margin: '12px',
-    float: 'left'
+    float: 'left',
+    ':focus' : {
+        borderRadius: '10px'
+    }
 };

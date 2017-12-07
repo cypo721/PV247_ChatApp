@@ -29,7 +29,7 @@ export const markSelectedChannel = (channel) => ({
     payload: {
         channel
     }
-})
+});
 
 export const failedAddingChannel = errorActionFactory(actionTypes.CHANNEL_ADDING_FAILED);
 export const failedRemovingChannel = errorActionFactory(actionTypes.CHANNEL_REMOVING_FAILED);

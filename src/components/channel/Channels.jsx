@@ -50,23 +50,27 @@ class Channels extends React.PureComponent {
                 </div>
                 <h4 style={{ float: 'left'}}>Channels:</h4>
                 <div style={{ marginTop: '40px'}}>
-                    { this.props.channels.map(channel => <p key={channel.id} style={{ display: 'flex', justifyContent: 'space-between'}} onClick={() => this.onSelectChannel(channel)}>
-                        <span># {channel.name}</span>
-                        <span style={{ width: '20px'}}>
-                            <button style={{ display: (channel.customData.owner === localStorage.getItem('loggedUserEmail'))? '' : 'none'}}
-                                className="btn btn-danger btn-xs"
-                                onClick={() => this.onClickDelete(channel.id)}
-                                hidden
-                            ><span className="glyphicon glyphicon-trash"></span></button>
-                        </span>
-                    </p>)
+                    { this.props.channels.map(channel =>
+                        <p key={channel.id} style={{ display: 'flex', justifyContent: 'space-between'}} onClick={() => this.onSelectChannel(channel)}>
+                            <span># {channel.name}</span>
+                            <span style={{ width: '20px'}}>
+                                <button style={{ display: (channel.customData.owner === localStorage.getItem('loggedUserEmail'))? '' : 'none'}}
+                                    className="btn btn-danger btn-xs"
+                                    onClick={() => this.onClickDelete(channel.id)}
+                                    hidden
+                                ><span className="glyphicon glyphicon-trash"></span></button>
+                            </span>
+                        </p>)
                     }
                 </div>
             </div>
         );
     }
 
-    onSubmitChannel = () => { this.props.onSubmitChannel(this.state.newChannel); }
+    onSubmitChannel = () => {
+        this.props.onSubmitChannel(this.state.newChannel);
+        this.setState(() => ({newChannel: ''}));
+    }
     onClickDelete = (channelId) => {this.props.onClickDelete(channelId);}
     onSelectChannel = (channel) => {this.props.onSelectChannel(channel);}
 }

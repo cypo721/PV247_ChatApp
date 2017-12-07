@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {Messages} from '../../components/message/MessageList.jsx';
-import {addNewMessage} from '../../actions/message/addNewMessage';
+import {deleteSelectedMessage} from '../../actions/message/deleteSelectedMessage';
 
 
 const mapStateToProps = (state) => ({
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickDelete: (messageId) => dispatch(addNewMessage(messageId)),
+    onClickDelete: (messageId) => dispatch(deleteSelectedMessage(messageId)),
 });
 
 const stateEnhancer = connect(mapStateToProps, mapDispatchToProps);

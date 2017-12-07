@@ -8,4 +8,4 @@ export const actualChannel = (prevState = null, action) => {
         default:
             return prevState;
     }
-}
+};
