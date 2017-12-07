@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import {addNewChannel} from '../../actions/channel/addNewChannel';
 import {MessageInput} from '../../components/message/MessageInput.jsx';
+import {addNewMessage} from '../../actions/message/addNewMessage';
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (message) => dispatch(addNewChannel(message)),
+    onSubmit: (message) => dispatch(addNewMessage(message)),
 });
 
 const stateEnhancer = connect(undefined, mapDispatchToProps);

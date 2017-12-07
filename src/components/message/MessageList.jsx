@@ -25,14 +25,7 @@ class Messages extends React.PureComponent {
         return (
             <div>
                 <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
+                {this.props.messages.map( msg => <p key={msg.id}> {msg.value} - {msg.createdBy}</p>)}
             </div>
         );
     }

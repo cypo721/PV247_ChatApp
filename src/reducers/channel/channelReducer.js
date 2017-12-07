@@ -1,13 +1,11 @@
-import {CHANNEL_FETCH} from '../../constants/actionTypes';
+import {MARK_SELECTED_CHANNEL} from '../../constants/actionTypes';
 
-const defaultStore = [];
 
-export default function channelReducer(store = defaultStore, action) {
+export const actualChannel = (prevState = null, action) => {
     switch (action.type) {
-        case CHANNEL_FETCH: {
-            return [1,2,3,4,5];
-        }
+        case MARK_SELECTED_CHANNEL:
+            return action.payload.channel;
         default:
-            return store;
+            return prevState;
     }
 }

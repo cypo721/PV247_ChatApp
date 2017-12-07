@@ -1,13 +1,17 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 class MessageInput extends React.PureComponent {
     constructor(props) {
         super(props);
     }
 
-    handleChange(event) {
-        this.setState({message: event.target.value});
-    }
+
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
+    };
+
+    handleChange = (event) => (this.setState({message: event.target.value}));
 
     componentWillMount() {
         this.setState({message: ''});
@@ -16,14 +20,13 @@ class MessageInput extends React.PureComponent {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <textarea value={this.state.message} onChange={this.handleChange} style={areaStyle} />
-
-                    <input className="btn btn-success" type="submit" value="Send"  style={{ marginTop: '15px', width: '10%'}}/>
-                </form>
+                <textarea value={this.state.message} onChange={this.handleChange} style={areaStyle} />
+                <button className="btn btn-success" type="submit" value="Send"  onClick={this.onSubmit} style={{ marginTop: '15px', width: '10%'}}>Send</button>
             </div>
         );
     }
+
+    onSubmit = () => { this.props.onSubmit(this.state.message); }
 }
 
 export {MessageInput};

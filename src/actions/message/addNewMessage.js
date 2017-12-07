@@ -5,6 +5,7 @@ import {
 } from '../../constants/uiConstants';
 import {failedAddingMessage, startCreatingMessage} from './actionCreators';
 import {uploadMessage} from './uploadMessage';
+import {prepareMessagesList} from './prepareMessagesList';
 
 export const addNewMessage = (message) =>
     (dispatch, getState) => {
@@ -12,11 +13,12 @@ export const addNewMessage = (message) =>
         dispatch(startCreatingMessage());
 
         const authToken = getState().shared.token;
-        const actualChannel = getState().shared.channel;
+        const actualChannel = getState().application.actualChannel.id;
 
         return uploadMessage(authToken, message, actualChannel)
             .then( (newMessage) => {
-                dispatch(addNewMessage(newMessage));
+                getState().application.messages.push[newMessage];
+                //dispatch(prepareMessagesList(actualChannel));
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failedAddingMessage(FAILED_ADDING_MESSAGE, error));

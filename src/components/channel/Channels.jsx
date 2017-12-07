@@ -14,14 +14,21 @@ class Channels extends React.PureComponent {
         fetchData: PropTypes.func.isRequired,
         onSubmitChannel: PropTypes.func.isRequired,
         onClickDelete: PropTypes.func.isRequired,
+        onSelectChannel: PropTypes.func.isRequired,
     };
 
     componentWillMount() {
         this.props.fetchData();
         this.setState(() => ({newChannel: ''}));
+        this.setState(() => ({actaulChannel: {}}));
     }
 
-    onChangeHandler = (event) => { this.setState({newChannel: event.target.value}); }
+    setActualChannel(channel) {
+        this.setState(() => ({actualChannel: channel}));
+    }
+
+    onChangeHandler = (event) => { this.setState({newChannel: event.target.value}); };
+    onClickHandler = (event) => {this.setState({actualChannel: event.target.id}); };
 
     render() {
         return (
@@ -43,7 +50,7 @@ class Channels extends React.PureComponent {
                 </div>
                 <h4 style={{ float: 'left'}}>Channels:</h4>
                 <div style={{ marginTop: '40px'}}>
-                    { this.props.channels.map(channel => <p key={channel.id} style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    { this.props.channels.map(channel => <p key={channel.id} style={{ display: 'flex', justifyContent: 'space-between'}} onClick={() => this.onSelectChannel(channel)}>
                         <span># {channel.name}</span>
                         <span style={{ width: '20px'}}>
                             <button style={{ display: (channel.customData.owner === localStorage.getItem('loggedUserEmail'))? '' : 'none'}}
@@ -61,6 +68,7 @@ class Channels extends React.PureComponent {
 
     onSubmitChannel = () => { this.props.onSubmitChannel(this.state.newChannel); }
     onClickDelete = (channelId) => {this.props.onClickDelete(channelId);}
+    onSelectChannel = (channel) => {this.props.onSelectChannel(channel);}
 }
 
 export {Channels};

@@ -4,7 +4,7 @@ import {addNewMessage} from '../../actions/message/addNewMessage';
 
 
 const mapStateToProps = (state) => ({
-    channels: state.application.appChannels.channels,
+    messages: state.application.messages,
 });
 
 const mapDispatchToProps = (dispatch) => ({
