@@ -3,7 +3,8 @@ export const convertFromServerData = (data) => ({
     channels: data.channels.map((channel) => ({
         id: channel.id,
         name: channel.name,
-        customData: JSON.parse(channel.customData || '{}')
+        customData: JSON.parse(channel.customData || '{}'),
+        isSelected: false
     }))
 });
 

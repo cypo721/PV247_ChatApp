@@ -1,5 +1,5 @@
 import {createApiMessageUriDelete} from '../../constants/api';
-import {validateResponse} from '../../utils/api/validateResponse';
+import {validateDelete} from '../../utils/api/validateDelete';
 
 export const deleteMessage = (token, messageId, channelId) =>
     fetch(
@@ -8,8 +8,7 @@ export const deleteMessage = (token, messageId, channelId) =>
             method: 'DELETE',
             headers: {
                 'Authorization': `bearer ${token}`,
-                'Content-Type': 'application/json',
                 'Accept': 'application/json',
             }
         })
-        .then(validateResponse);
+        .then(validateDelete);

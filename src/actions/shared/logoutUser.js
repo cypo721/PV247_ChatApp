@@ -6,6 +6,7 @@ export const logoutUser = () =>
         localStorage.removeItem(keys.SHARED_TOKEN);
         localStorage.removeItem(keys.SHARED_TOKEN_TIMESTAMP);
         localStorage.removeItem(keys.LOGGED_USER_EMAIL);
+        localStorage.removeItem('actualChannelId');
 
         dispatch(invalidateToken());
     };

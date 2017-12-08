@@ -1,5 +1,5 @@
 import {
-    CHANNEL_INVATE_USER, CHANNEL_UPDATE_NAME, MARK_SELECTED_CHANNEL,
+    CHANNEL_INVATE_USER, CHANNEL_UPDATE_NAME, CHANNEL_UPDATE_SELECTION, MARK_SELECTED_CHANNEL,
     START_CREATING_CHANNEL, START_REMOVING_CHANNEL
 } from '../../constants/actionTypes';
 import * as actionTypes from '../../constants/actionTypes';
@@ -7,6 +7,13 @@ import {errorActionFactory} from '../../utils/errorActionFactory';
 
 export const channelUpdate = (channel) => ({
     type: CHANNEL_UPDATE_NAME,
+    payload: {
+        channel
+    }
+});
+
+export const channelSelection = (channel) => ({
+    type: CHANNEL_UPDATE_SELECTION,
     payload: {
         channel
     }

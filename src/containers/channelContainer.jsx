@@ -5,6 +5,7 @@ import Header from '../components/app/Header.jsx';
 import {Channels} from '../containers-redux/channels/Channels.jsx';
 import {Messages} from '../containers-redux/messages/MessagesList.jsx';
 import {MessageInput} from '../containers-redux/messages/MessageInput.jsx';
+import {Errors} from '../containers-redux/shared/Errors.jsx';
 
 class ChannelContainer extends Component {
     constructor(props) {
@@ -15,6 +16,11 @@ class ChannelContainer extends Component {
         return (
             <div >
                 <Header email={this.props.email}/>
+                <div style={{witdh: '100%', display: 'flex'}}>
+                    <div className="col-sx-push-3 col-sx-6 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3">
+                        <Errors key="errors" />
+                    </div>
+                </div>
                 <div style={{ display: 'flex'}}>
                     <Channels/>
                     {JSON.stringify(this.props.actualChannel) == '{}' ?
@@ -30,8 +36,6 @@ class ChannelContainer extends Component {
                             </div>
                         </div>
                     }
-                    {/*<button type="button" onClick={this.onClick}>fetch</button>*/}
-                    {/*{this.props.channels.map(channel => <p key={channel}>WOHOO {channel}</p>)}*/}
                 </div>
             </div>
         );
@@ -57,6 +61,6 @@ export default connect(mapStateToProps, {
 const msgStyle = {
     width: '78%',
     backgroundColor: 'ghostwhite',
-    height: 'calc(100vh - 67px)',
+    height: 'calc(100vh - 68px)',
     border: '1px',
 };

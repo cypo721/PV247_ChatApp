@@ -18,7 +18,7 @@ export const deleteSelectedMessage = (messageId) =>
         const actualChannel = getState().application.actualChannel.id;
 
         return deleteMessage(authToken, messageId, actualChannel)
-            .then( (response) => {
+            .then( () => {
                 dispatch(removeMessage(messageId));
             })
             .catch((error) => {

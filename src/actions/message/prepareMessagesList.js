@@ -1,4 +1,4 @@
-import {markSelectedChannel} from '../channel/actionCreators';
+import {channelSelection, markSelectedChannel} from '../channel/actionCreators';
 import {loadMessages} from './loadMessagesOfChannel';
 import {dismissError} from '../shared/actionCreators';
 import {FAILED_FETCHING_MESSAGE, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
@@ -7,10 +7,11 @@ import {convertFromServerMessages} from './messageData';
 
 export const prepareMessagesList = (channel) =>
     (dispatch, getState) => {
-
+        dispatch(channelSelection(channel));
         dispatch(markSelectedChannel(channel));
 
         const authToken = getState().shared.token;
+        localStorage.setItem('actualChannelId', channel.id);
 
         return loadMessages(authToken, channel.id)
             .then( (messages) => {

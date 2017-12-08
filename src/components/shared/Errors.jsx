@@ -36,10 +36,14 @@ class Error extends React.PureComponent {
 }
 
 const Errors = ({errors, onDismissClick}) => (
-    (errors || [])
-    && errors.map(error => (
-        <Error key={error.id} error={error} onClick={onDismissClick}/>
-    ))
+    <div>
+        {
+            (errors || []) &&
+            errors.map(error => (
+                <Error key={error.id} error={error} onClick={onDismissClick} />
+            ))
+        }
+    </div>
 );
 
 Errors.propTypes = {

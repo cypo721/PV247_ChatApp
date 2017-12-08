@@ -8,7 +8,7 @@ export const convertFromServerMessages = (data) => (
         updatedAt: msg.updatedAt,
         customData: JSON.parse(msg.customData || '{}')
     })
-));
+    ));
 
 export const convertNewMessage = (msg) => ({
     id: msg.id,
