@@ -15,7 +15,7 @@ export default class Header extends PureComponent {
     render() {
         return (
             <div className="container-fluid" id="header-div">
-                <nav className="navbar navbar-default" style={{marginBottom: '0px'}}>
+                <nav className="navbar navbar-inverse" style={{marginBottom: '0px'}}>
                     <div className="navbar-text pull-right">Signed in as <Link  to={'/profile'}>{this.props.email}</Link> <LogoutButton/></div>
                 </nav>
             </div>

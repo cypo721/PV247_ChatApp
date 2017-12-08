@@ -1,11 +1,11 @@
-import {createApiMessageUri} from '../../constants/api';
 import {validateResponse} from '../../utils/api/validateResponse';
+import {createApiMessageUriConcrete} from '../../constants/api';
 
-export const uploadMessage = (token, text, channelId, avatarUri, nick) =>
+export const votingMessage = (token, channelId, message) =>
     fetch(
-        createApiMessageUri(channelId),
+        createApiMessageUriConcrete(channelId, message.id),
         {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Authorization': `bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -13,12 +13,12 @@ export const uploadMessage = (token, text, channelId, avatarUri, nick) =>
             },
             body: JSON.stringify(
                 {
-                    'value': text,
+                    'value': message.value,
                     'customData': JSON.stringify({
-                        'uri': avatarUri,
-                        'nick': nick,
-                        'up': [],
-                        'down': []
+                        'uri': message.customData.uri,
+                        'nick': message.customData.nick,
+                        'up': message.customData.up,
+                        'down': message.customData.down
                     })
                 }
             ),

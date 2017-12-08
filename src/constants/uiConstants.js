@@ -8,6 +8,7 @@ export const FAILED_UPDATING_CHANNEL = 'Problem with updating channel.';
 export const FAILED_ADDING_MESSAGE = 'Problem with sending new message to this channel.';
 export const FAILED_FETCHING_MESSAGE = 'Problem with loading messages of this channel.';
 export const FAILED_REMOVING_MESSAGE = 'Problem with removing message.';
+export const FAILED_UPDATING_MESSAGE = 'Problem with your voting of message.';
 export const FAILED_FETCH_DETAILS_MESSAGE = 'Obtaining details fallen at the final hurdle…';
 export const FAILED_FETCH_AVATAR_MESSAGE = 'Obtaining avatar epically failed…';
 export const FAILED_FETCH_APP_DATA_MESSAGE = 'Obtaining application data failed…';

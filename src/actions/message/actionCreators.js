@@ -1,6 +1,6 @@
 import {
-    MESSAGE_CREATE, MESSAGE_DELETE, MESSAGE_DOWNVOTE,
-    MESSAGE_UPVOTE, MESSAGES_FETCH, START_CREATING_MESSAGE, START_REMOVING_MESSAGE
+    MESSAGE_CREATE, MESSAGE_DELETE, MESSAGE_UPDATE,
+    MESSAGES_FETCH, START_CREATING_MESSAGE, START_MESSAGE_UPDATE, START_REMOVING_MESSAGE
 } from '../../constants/actionTypes';
 import {errorActionFactory} from '../../utils/errorActionFactory';
 import * as actionTypes from '../../constants/actionTypes';
@@ -19,12 +19,16 @@ export const addCreatedMessage = (message) => ({
     }
 });
 
-export const messageUpvote = () => ({
-    type: MESSAGE_UPVOTE,
+export const updateMessage = (message, index) => ({
+    type: MESSAGE_UPDATE,
+    payload: {
+        message,
+        index
+    }
 });
 
-export const messageDownvote = () => ({
-    type: MESSAGE_DOWNVOTE,
+export const startUpdatingMessage = () => ({
+    type: START_MESSAGE_UPDATE,
 });
 
 export const startCreatingMessage = () => ({
@@ -45,3 +49,4 @@ export const loadMessagesOfChannel = (messages) =>({
 export const failedAddingMessage = errorActionFactory(actionTypes.MESSAGE_ADDING_FAILED);
 export const failedFetchingMessages = errorActionFactory(actionTypes.MESSAGE_FETCHING_FAILED);
 export const failedRemovingMessage = errorActionFactory(actionTypes.MESSAGE_REMOVING_FAILED);
+export const failedUpdatingMessage = errorActionFactory(actionTypes.MESSAGE_UPDATING_FAILED);

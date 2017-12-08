@@ -60,7 +60,7 @@ export default connect(mapStateToProps, {
 
 const msgStyle = {
     width: '78%',
-    backgroundColor: 'ghostwhite',
+    backgroundColor: 'lightgrey',
     height: 'calc(100vh - 68px)',
     border: '1px',
 };

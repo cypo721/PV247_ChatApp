@@ -9,6 +9,6 @@ export const API_REGISTER_USER_URI = `${API_URI}/${API_APP_ID}/user`;
 export const createApiUserUri = (userEmail) => `${API_URI}/${API_APP_ID}/user/${userEmail}`;
 export const createApiFilerUri = (fileId) => `${API_URI}//file/${fileId}/download-link`;
 export const createApiMessageUri = (channelId) => `${API_URI}/app/${API_APP_ID}/channel/${channelId}/message`;
-export const createApiMessageUriDelete = (channelId, messageId) => `${API_URI}/app/${API_APP_ID}/channel/${channelId}/message/${messageId}`;
+export const createApiMessageUriConcrete = (channelId, messageId) => `${API_URI}/app/${API_APP_ID}/channel/${channelId}/message/${messageId}`;
 
 //export const USER_EMAIL = 'undefined@null.zero';
