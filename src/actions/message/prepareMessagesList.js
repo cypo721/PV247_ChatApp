@@ -3,6 +3,7 @@ import {loadMessages} from './loadMessagesOfChannel';
 import {dismissError} from '../shared/actionCreators';
 import {FAILED_FETCHING_MESSAGE, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import {failedFetchingMessages, loadMessagesOfChannel} from './actionCreators';
+import {convertFromServerMessages} from './messageData';
 
 export const prepareMessagesList = (channel) =>
     (dispatch, getState) => {
@@ -13,7 +14,8 @@ export const prepareMessagesList = (channel) =>
 
         return loadMessages(authToken, channel.id)
             .then( (messages) => {
-                dispatch(loadMessagesOfChannel(messages));
+                const convertedMessages = convertFromServerMessages(messages);
+                dispatch(loadMessagesOfChannel(convertedMessages));
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failedFetchingMessages(FAILED_FETCHING_MESSAGE, error));

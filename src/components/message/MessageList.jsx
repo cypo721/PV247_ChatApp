@@ -27,9 +27,10 @@ class Messages extends React.PureComponent {
                 {this.props.messages.map( msg =>
                     <div style={msgDiv} key={msg.id}>
                         <div style={photoDiv}>
-                            <img width={'30px'} height={'30px'} style={{borderRadius: '20px'}} src="https://pv247messaging.blob.core.windows.net/files/feae2f4f-8c6e-4e15-be9c-0025f86c8eb3/avatar.png?sv=2017-04-17&sr=b&sig=DPS6tJSLAz4MuxSTi%2B5UDSePMrlRrqYzdd0uUR7igHE%3D&se=2018-12-07T21%3A06%3A21Z&sp=r"/></div>
+                            <img width={'30px'} height={'30px'} style={{borderRadius: '20px'}}
+                                src={msg.customData.uri}/></div>
                         <div style={{ width: '80%'}}>
-                            <div><b>{msg.createdBy}    {new Date(msg.createdAt).getHours()}:{new Date(msg.createdAt).getMinutes()}</b></div>
+                            <div><b>{msg.customData.nick}    {new Date(msg.createdAt).getHours()}:{new Date(msg.createdAt).getMinutes()}</b></div>
                             <div>{msg.value}</div>
                         </div>
                         <div style={{ float: 'right'}}>
@@ -59,8 +60,7 @@ const listDiv = {
 
 const msgDiv = {
     width: '100%',
-    marginLeft: '5px',
-    marginRight: '5px',
+    margin: '5px',
     display: 'flex'
 };
 

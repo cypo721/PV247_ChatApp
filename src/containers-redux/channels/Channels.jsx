@@ -4,6 +4,7 @@ import {initializeApp} from '../../actions/channel/initializeApp';
 import {addNewChannel} from '../../actions/channel/addNewChannel';
 import {removeSelectedChannel} from '../../actions/channel/removeSelectedChannel';
 import {prepareMessagesList} from '../../actions/message/prepareMessagesList';
+import {fetchUserDetails} from '../../actions/profile/fetchUserDetails';
 
 
 const mapStateToProps = (state) => ({
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     fetchData: () => dispatch(initializeApp()),
+    fetchUser: () => dispatch(fetchUserDetails()),
     onSubmitChannel: (channel) => dispatch(addNewChannel(channel)),
     onClickDelete: (channelId) => dispatch(removeSelectedChannel(channelId)),
     onSelectChannel: (channel) => dispatch(prepareMessagesList(channel))

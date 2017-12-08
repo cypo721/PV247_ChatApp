@@ -12,6 +12,7 @@ class Channels extends React.PureComponent {
             name: PropTypes.string.isRequired,
         }).isRequired),
         fetchData: PropTypes.func.isRequired,
+        fetchUser: PropTypes.func.isRequired,
         onSubmitChannel: PropTypes.func.isRequired,
         onClickDelete: PropTypes.func.isRequired,
         onSelectChannel: PropTypes.func.isRequired,
@@ -19,6 +20,7 @@ class Channels extends React.PureComponent {
 
     componentWillMount() {
         this.props.fetchData();
+        this.props.fetchUser();
         this.setState(() => ({newChannel: ''}));
         this.setState(() => ({actaulChannel: {}}));
     }
