@@ -46,5 +46,9 @@ export const receiveAppData = (application) => ({
     }
 });
 
+export const removeData = () => ({
+    type: actionTypes.REMOVE_DATA
+});
+
 export const failAuthentication = errorActionFactory(actionTypes.SHARED_AUTHENTICATION_FAILED);
 export const failRegistration = errorActionFactory(actionTypes.SHARED_REGISTRATION_FAILED);

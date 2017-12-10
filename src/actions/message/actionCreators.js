@@ -1,5 +1,5 @@
 import {
-    MESSAGE_CREATE, MESSAGE_DELETE, MESSAGE_UPDATE,
+    MESSAGE_CREATE, MESSAGE_DELETE, MESSAGE_DOWNVOTE, MESSAGE_REMOVE_VOTE, MESSAGE_UPDATE, MESSAGE_UPVOTE,
     MESSAGES_FETCH, START_CREATING_MESSAGE, START_MESSAGE_UPDATE, START_REMOVING_MESSAGE
 } from '../../constants/actionTypes';
 import {errorActionFactory} from '../../utils/errorActionFactory';
@@ -24,6 +24,30 @@ export const updateMessage = (message, index) => ({
     payload: {
         message,
         index
+    }
+});
+
+export const upvote = (message, email) => ({
+    type: MESSAGE_UPVOTE,
+    payload: {
+        message,
+        email
+    }
+});
+
+export const downvote = (message, email) => ({
+    type: MESSAGE_DOWNVOTE,
+    payload: {
+        message,
+        email
+    }
+});
+
+export const removeVote = (message, email) => ({
+    type: MESSAGE_REMOVE_VOTE,
+    payload: {
+        message,
+        email
     }
 });
 

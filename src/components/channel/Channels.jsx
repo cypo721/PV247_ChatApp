@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 class Channels extends React.PureComponent {
     constructor(props) {
@@ -56,7 +57,7 @@ class Channels extends React.PureComponent {
                         <p className={channel.isSelected? 'active' : ''}key={channel.id} style={{ display: 'flex', justifyContent: 'space-between'}} onClick={() => this.onSelectChannel(channel)}>
                             <span># {channel.name}</span>
                             <span style={{ width: '20px'}}>
-                                <button style={{ display: (channel.customData.owner === localStorage.getItem('loggedUserEmail'))? '' : 'none'}}
+                                <button style={{ display: (channel.customData.owner === localStorage.getItem(LOGGED_USER_EMAIL))? '' : 'none'}}
                                     className="btn btn-danger btn-xs"
                                     onClick={() => this.onClickDelete(channel.id)}
                                     hidden

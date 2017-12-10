@@ -6,6 +6,7 @@ import {
 import {addCreatedMessage, failedAddingMessage, startCreatingMessage} from './actionCreators';
 import {uploadMessage} from './uploadMessage';
 import {convertNewMessage} from './messageData';
+import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const addNewMessage = (message) =>
     (dispatch, getState) => {
@@ -15,7 +16,7 @@ export const addNewMessage = (message) =>
         const authToken = getState().shared.token;
         const actualChannel = getState().application.actualChannel.id;
         const avatarUri = getState().profile.avatarUri;
-        const nick = getState().profile.details.fullName || localStorage.getItem('loggedUserEmail');
+        const nick = getState().profile.details.fullName || localStorage.getItem(LOGGED_USER_EMAIL);
 
         return uploadMessage(authToken, message, actualChannel, avatarUri, nick)
             .then( (newMessage) => {

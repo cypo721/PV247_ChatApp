@@ -1,7 +1,7 @@
 import {validateResponse} from '../../utils/api/validateResponse';
 import {createApiMessageUriConcrete} from '../../constants/api';
 
-export const votingMessage = (token, channelId, message) =>
+export const votingMessage = (token, channelId, message, up, down) =>
     fetch(
         createApiMessageUriConcrete(channelId, message.id),
         {
@@ -17,8 +17,8 @@ export const votingMessage = (token, channelId, message) =>
                     'customData': JSON.stringify({
                         'uri': message.customData.uri,
                         'nick': message.customData.nick,
-                        'up': message.customData.up,
-                        'down': message.customData.down
+                        'up': up,
+                        'down': down
                     })
                 }
             ),

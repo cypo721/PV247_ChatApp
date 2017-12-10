@@ -1,4 +1,4 @@
-import {  invalidateToken } from './actionCreators';
+import {invalidateToken, removeData} from './actionCreators';
 import * as keys from '../../constants/localStorageKeys';
 
 export const logoutUser = () =>
@@ -8,5 +8,6 @@ export const logoutUser = () =>
         localStorage.removeItem(keys.LOGGED_USER_EMAIL);
         localStorage.removeItem('actualChannelId');
 
+        dispatch(removeData());
         dispatch(invalidateToken());
     };

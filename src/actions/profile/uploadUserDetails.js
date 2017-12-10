@@ -21,13 +21,14 @@ import {
     FAILED_UPDATE_DETAILS_MESSAGE,
     MILISECONDS_TO_AUTO_DISMISS_ERROR,
 } from '../../constants/uiConstants';
+import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const uploadUserDetails = (details) =>
     async (dispatch, getState) => {
         dispatch(startSubmit(DETAILS_FORM_NAME));
 
         const authToken = getState().shared.token;
-        const requestUri = createApiUserUri(getState().shared.email || localStorage.getItem('loggedUserEmail'));
+        const requestUri = createApiUserUri(getState().shared.email || localStorage.getItem(LOGGED_USER_EMAIL));
         const serverDetails = convertToServerDetails(details);
 
         try {

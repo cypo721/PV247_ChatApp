@@ -6,6 +6,7 @@ import {Channels} from '../containers-redux/channels/Channels.jsx';
 import {Messages} from '../containers-redux/messages/MessagesList.jsx';
 import {MessageInput} from '../containers-redux/messages/MessageInput.jsx';
 import {Errors} from '../containers-redux/shared/Errors.jsx';
+import {LOGGED_USER_EMAIL} from '../constants/localStorageKeys';
 
 class ChannelContainer extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ ChannelContainer.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        email: state.shared.email || localStorage.getItem('loggedUserEmail'),
+        email: state.shared.email || localStorage.getItem(LOGGED_USER_EMAIL),
         actualChannel: state.application.actualChannel || {},
     };
 }

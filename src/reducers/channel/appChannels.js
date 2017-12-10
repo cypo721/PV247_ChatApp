@@ -1,4 +1,3 @@
-
 import {APP_DATA, CHANNEL_UPDATE_SELECTION} from '../../constants/actionTypes';
 
 const initialState = {

@@ -18,6 +18,7 @@ import {
     FAILED_FETCH_DETAILS_MESSAGE
 } from '../../constants/uiConstants';
 import { fetchUserAvatar } from './fetchUserAvatar';
+import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const fetchUserDetails = () =>
     (dispatch, getState) => {
@@ -25,7 +26,7 @@ export const fetchUserDetails = () =>
         dispatch(startFetchingProfileAvatar());
 
         const authToken = getState().shared.token;
-        const requestUri = createApiUserUri(getState().shared.email || localStorage.getItem('loggedUserEmail'));
+        const requestUri = createApiUserUri(getState().shared.email || localStorage.getItem(LOGGED_USER_EMAIL));
 
         return fetchReceive(requestUri, authToken)
             .then((serverDetails) => dispatch(updateProfileDetails(convertFromServerDetails(serverDetails))))

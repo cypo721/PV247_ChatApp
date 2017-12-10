@@ -4,11 +4,13 @@ import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
 import {
-    failedUpdatingMessage,
-    startUpdatingMessage, updateMessage
+    downvote,
+    failedUpdatingMessage, removeVote,
+    startUpdatingMessage, updateMessage, upvote
 } from './actionCreators';
 import {convertNewMessage} from './messageData';
 import {votingMessage} from './votingMessage';
+import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const updateVotesOfMessage = (message, vote) =>
     (dispatch, getState) => {
@@ -17,22 +19,38 @@ export const updateVotesOfMessage = (message, vote) =>
 
         const authToken = getState().shared.token;
         const actualChannel = getState().application.actualChannel.id;
+        var up = message.customData.up;
+        var down = message.customData.down;
+
         if (vote == 1) {
-            message.customData.up.push(localStorage.getItem('loggedUserEmail'));
+            up = up.concat(localStorage.getItem(LOGGED_USER_EMAIL));
         }
         if (vote == -1) {
-            message.customData.down.push(localStorage.getItem('loggedUserEmail'));
+            down = down.concat(localStorage.getItem(LOGGED_USER_EMAIL));
         }
         if (vote == 0) {
-            message.customData.up = message.customData.up.filter(u => u !== localStorage.getItem('loggedUserEmail'));
-            message.customData.down = message.customData.down.filter( u => u !== localStorage.getItem('loggedUserEmail'));
+            up = up.filter(u => u !== localStorage.getItem(LOGGED_USER_EMAIL));
+            down = down.filter( u => u !== localStorage.getItem(LOGGED_USER_EMAIL));
         }
-        const index = getState().application.messages.indexOf(message);
 
-        return votingMessage(authToken, actualChannel, message)
+
+        return votingMessage(authToken, actualChannel, message, up, down)
             .then( (updatedMessage) => {
                 const convertedMsg = convertNewMessage(updatedMessage);
-                dispatch(updateMessage(convertedMsg, index));
+                //dispatch(updateMessage(convertedMsg, index));
+                switch(vote){
+                    case 1:
+                        dispatch(upvote(convertedMsg, localStorage.getItem(LOGGED_USER_EMAIL)));
+                        break;
+                    case -1:
+                        dispatch(downvote(convertedMsg,localStorage.getItem(LOGGED_USER_EMAIL)));
+                        break;
+                    case 0:
+                        dispatch(removeVote(convertedMsg, localStorage.getItem(LOGGED_USER_EMAIL)));
+                        break;
+                    default:
+                        null;
+                }
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failedUpdatingMessage(FAILED_UPDATING_MESSAGE, error));

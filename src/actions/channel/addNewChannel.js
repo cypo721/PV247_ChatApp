@@ -3,6 +3,7 @@ import {FAILED_ADDING_CHANNEL, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../co
 import {failedAddingChannel, startCreatingChannel} from './actionCreators';
 import {uploadChannel} from './uploadChannel';
 import {convertFromServerData} from './applicationData';
+import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const addNewChannel = (channel) =>
     (dispatch, getState) => {
@@ -11,7 +12,7 @@ export const addNewChannel = (channel) =>
 
         const authToken = getState().shared.token;
 
-        return uploadChannel(authToken, getState().shared.email || localStorage.getItem('loggedUserEmail'), channel)
+        return uploadChannel(authToken, getState().shared.email || localStorage.getItem(LOGGED_USER_EMAIL), channel)
             .then( (aplication) => {
                 const convertedData = convertFromServerData(aplication);
                 dispatch(receiveAppData(convertedData));

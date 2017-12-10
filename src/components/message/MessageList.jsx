@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 class Messages extends React.PureComponent {
     constructor(props) {
@@ -33,38 +34,42 @@ class Messages extends React.PureComponent {
                             <img width={'30px'} height={'30px'} style={{borderRadius: '20px'}}
                                 src={msg.customData.uri}/></div>
                         <div style={{ width: '80%'}}>
-                            <div><b>{msg.customData.nick}    {new Date(msg.createdAt).getHours()}:{new Date(msg.createdAt).getMinutes()} - </b>
+                            <div><b>{msg.customData.nick} {new Date(msg.createdAt).toLocaleDateString()} {new Date(msg.createdAt).toLocaleTimeString()} - </b>
                                 Score:<b>{msg.customData.up.length - msg.customData.down.length}</b>
                             </div>
                             <div>{msg.value}</div>
                         </div>
                         <div style={{ float: 'right'}}>
-                            <button style={{ display: (msg.createdBy === localStorage.getItem('loggedUserEmail'))? '' : 'none'}}
+                            <button style={{ display: (msg.createdBy === localStorage.getItem(LOGGED_USER_EMAIL))? '' : 'none'}}
                                 title="Delete message"
                                 className="btn btn-danger btn-xs"
                                 onClick={() => this.onClickDelete(msg.id)}
                                 hidden
                             ><span className="glyphicon glyphicon-trash"></span></button>
 
-                            <button style={{ display: (msg.createdBy === localStorage.getItem('loggedUserEmail'))? 'none' : ''}}
+                            <button style={{ display: (msg.createdBy === localStorage.getItem(LOGGED_USER_EMAIL))? 'none' : ''}}
                                 title="Upvote"
                                 className="btn btn-info btn-xs"
                                 onClick={() => this.onClickUpvote(msg)}
                                 hidden
+                                disabled={ msg.customData.up.includes(localStorage.getItem(LOGGED_USER_EMAIL)) ||
+                                    msg.customData.down.includes(localStorage.getItem(LOGGED_USER_EMAIL))}
                             ><span className="glyphicon glyphicon-thumbs-up"></span></button>
 
-                            <button style={{ display: (msg.createdBy === localStorage.getItem('loggedUserEmail'))? 'none' : ''}}
+                            <button style={{ display: (msg.createdBy === localStorage.getItem(LOGGED_USER_EMAIL))? 'none' : ''}}
                                 title="Remove vote"
                                 className="btn btn-default btn-xs"
                                 onClick={() => this.onClickDeleteVote(msg)}
                                 hidden
                             ><span className="glyphicon glyphicon-remove-circle"></span></button>
 
-                            <button style={{ display: (msg.createdBy === localStorage.getItem('loggedUserEmail'))? 'none' : ''}}
+                            <button style={{ display: (msg.createdBy === localStorage.getItem(LOGGED_USER_EMAIL))? 'none' : ''}}
                                 title="Downvote"
                                 className="btn btn-info btn-xs"
                                 onClick={() => this.onClickDownvote(msg)}
                                 hidden
+                                disabled={ msg.customData.up.includes(localStorage.getItem(LOGGED_USER_EMAIL)) ||
+                                    msg.customData.down.includes(localStorage.getItem(LOGGED_USER_EMAIL))}
                             ><span className="glyphicon glyphicon-thumbs-down"></span></button>
                         </div>
                     </div>
