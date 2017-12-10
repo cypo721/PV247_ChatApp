@@ -6,7 +6,7 @@ import {finishEditingChannel} from '../../actions/channel/actionCreators';
 
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmitChannel: (channel) => dispatch(updateChannel(channel)),
+    onSubmitChannel: (newName, users) => dispatch(updateChannel(newName, users)),
     onCancel: () => dispatch(finishEditingChannel())
 });
 

@@ -55,7 +55,9 @@ class Channels extends React.PureComponent {
                 <h4 style={{ float: 'left'}}>Channels:</h4>
                 <div style={{ marginTop: '40px'}}>
                     {this.props.channels.map(channel =>
-                        <p className={channel.isSelected? 'active' : ''}key={channel.id} style={{ display: 'flex', justifyContent: 'space-between'}} onClick={() => this.onSelectChannel(channel)}>
+                        <p className={channel.isSelected? 'active' : ''}key={channel.id}
+                            style={{ display: channel.customData.users.includes(localStorage.getItem(LOGGED_USER_EMAIL))? 'flex' : 'none', justifyContent: 'space-between'}}
+                            onClick={() => this.onSelectChannel(channel)}>
                             <span># {channel.name}</span>
                             <span style={{ width: '40px', display: 'flex'}}>
                                 <button style={{ display: (channel.customData.owner === localStorage.getItem(LOGGED_USER_EMAIL))? '' : 'none'}}

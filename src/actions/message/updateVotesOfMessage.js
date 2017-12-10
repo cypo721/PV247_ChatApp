@@ -6,7 +6,7 @@ import {
 import {
     downvote,
     failedUpdatingMessage, removeVote,
-    startUpdatingMessage, updateMessage, upvote
+    startUpdatingMessage, upvote
 } from './actionCreators';
 import {convertNewMessage} from './messageData';
 import {votingMessage} from './votingMessage';

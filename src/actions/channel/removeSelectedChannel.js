@@ -1,6 +1,6 @@
 import {removeChannel} from './removeChannel';
 import {dismissError, receiveAppData} from '../shared/actionCreators';
-import {failedRemovingChannel, startRemovingChannel} from './actionCreators';
+import {failedRemovingChannel, startRemovingChannel, unselectChannel} from './actionCreators';
 import {FAILED_REMOVING_CHANNEL, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import {convertFromServerData} from './applicationData';
 
@@ -10,11 +10,15 @@ export const removeSelectedChannel = (channel) =>
         dispatch(startRemovingChannel());
 
         const authToken = getState().shared.token;
+        const unmark = channel.id === getState().application.actualChannel.id;
 
         return removeChannel(authToken, channel)
             .then( (aplication) => {
                 const convertedData = convertFromServerData(aplication);
                 dispatch(receiveAppData(convertedData));
+                if (unmark) {
+                    dispatch(unselectChannel());
+                }
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failedRemovingChannel(FAILED_REMOVING_CHANNEL, error));

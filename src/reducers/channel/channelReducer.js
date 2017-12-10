@@ -1,4 +1,4 @@
-import {MARK_SELECTED_CHANNEL, REMOVE_DATA} from '../../constants/actionTypes';
+import {MARK_SELECTED_CHANNEL, REMOVE_DATA, UNMARK_SELECTED_CHANNEL} from '../../constants/actionTypes';
 
 
 export const actualChannel = (prevState = null, action) => {
@@ -6,6 +6,8 @@ export const actualChannel = (prevState = null, action) => {
         case MARK_SELECTED_CHANNEL:
             return action.payload.channel;
         case REMOVE_DATA:
+            return null;
+        case UNMARK_SELECTED_CHANNEL:
             return null;
         default:
             return prevState;

@@ -1,6 +1,7 @@
 import {
     CHANNEL_INVATE_USER, CHANNEL_UPDATE_NAME, CHANNEL_UPDATE_SELECTION, FINISH_EDITING_CHANNEL, MARK_SELECTED_CHANNEL,
-    START_CREATING_CHANNEL, START_EDITING_CHANNEL, START_REMOVING_CHANNEL, START_UPDATING_CHANNEL
+    START_CREATING_CHANNEL, START_EDITING_CHANNEL, START_REMOVING_CHANNEL, START_UPDATING_CHANNEL,
+    UNMARK_SELECTED_CHANNEL
 } from '../../constants/actionTypes';
 import * as actionTypes from '../../constants/actionTypes';
 import {errorActionFactory} from '../../utils/errorActionFactory';
@@ -48,6 +49,10 @@ export const markSelectedChannel = (channel) => ({
     payload: {
         channel
     }
+});
+
+export const unselectChannel = () => ({
+    type: UNMARK_SELECTED_CHANNEL,
 });
 
 export const failedAddingChannel = errorActionFactory(actionTypes.CHANNEL_ADDING_FAILED);
