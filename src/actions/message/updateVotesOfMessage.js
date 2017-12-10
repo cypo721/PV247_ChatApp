@@ -9,7 +9,7 @@ import {
     startUpdatingMessage, upvote
 } from './actionCreators';
 import {convertNewMessage} from './messageData';
-import {votingMessage} from './votingMessage';
+import {votingMessage} from './api/votingMessage';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const updateVotesOfMessage = (message, vote) =>

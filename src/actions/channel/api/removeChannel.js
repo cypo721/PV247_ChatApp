@@ -1,5 +1,5 @@
-import {API_APP_URI} from '../../constants/api';
-import {validateResponse} from '../../utils/api/validateResponse';
+import {API_APP_URI} from '../../../constants/api';
+import {validateResponse} from '../../../utils/api/validateResponse';
 
 export const removeChannel = (token, channelId) =>
     fetch(

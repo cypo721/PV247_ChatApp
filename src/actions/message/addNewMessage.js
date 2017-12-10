@@ -4,7 +4,7 @@ import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
 import {addCreatedMessage, failedAddingMessage, startCreatingMessage} from './actionCreators';
-import {uploadMessage} from './uploadMessage';
+import {uploadMessage} from './api/uploadMessage';
 import {convertNewMessage} from './messageData';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 

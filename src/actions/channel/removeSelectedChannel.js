@@ -1,4 +1,4 @@
-import {removeChannel} from './removeChannel';
+import {removeChannel} from './api/removeChannel';
 import {dismissError, receiveAppData} from '../shared/actionCreators';
 import {failedRemovingChannel, startRemovingChannel, unselectChannel} from './actionCreators';
 import {FAILED_REMOVING_CHANNEL, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';

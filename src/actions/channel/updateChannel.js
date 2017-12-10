@@ -3,9 +3,9 @@ import {
     FAILED_UPDATING_CHANNEL,
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
-import {failedUpdatingChannel, finishEditingChannel, markSelectedChannel, startUpdatingChannel} from './actionCreators';
+import {channelSelection, failedUpdatingChannel, finishEditingChannel, startUpdatingChannel} from './actionCreators';
 import {convertFromServerData} from './applicationData';
-import {updateExistingChannel} from './updateExistingChannel';
+import {updateExistingChannel} from './api/updateExistingChannel';
 
 export const updateChannel = (newName, users) =>
     (dispatch, getState) => {
@@ -22,7 +22,7 @@ export const updateChannel = (newName, users) =>
                 const convertedData = convertFromServerData(aplication);
                 dispatch(receiveAppData(convertedData));
                 dispatch(finishEditingChannel());
-                dispatch(markSelectedChannel(getState().application.actualChannel));
+                dispatch(channelSelection(getState().application.actualChannel));
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failedUpdatingChannel(FAILED_UPDATING_CHANNEL, error));

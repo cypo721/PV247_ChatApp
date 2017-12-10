@@ -1,5 +1,5 @@
-import {createApiMessageUri} from '../../constants/api';
-import {validateResponse} from '../../utils/api/validateResponse';
+import {createApiMessageUri} from '../../../constants/api';
+import {validateResponse} from '../../../utils/api/validateResponse';
 
 export const loadMessages = (token, channelId) =>
     fetch(

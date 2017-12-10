@@ -9,14 +9,20 @@ class LoginForm extends React.PureComponent {
     };
 
     componentWillMount() {
-        this.setState(() => ({componentId: uuid(), email: ''}));
+        this.setState(() => ({componentId: uuid(), email: '', valid: false}));
     }
 
-    onChangeHandler = (event) => { this.setState({email: event.target.value}); }
+    onChangeHandler = (event) => {
+        this.setState({email: event.target.value});
+        if (document.getElementById('emailInput')) {
+            this.setState({valid: document.getElementById('emailInput').checkValidity()});
+        }
+    }
 
     render() {
         const {componentId} = this.state;
         const loginId = `${componentId}_login`;
+
 
         return (
             <form>
@@ -34,25 +40,27 @@ class LoginForm extends React.PureComponent {
                         <input
                             className="form-control"
                             type="email"
-                            id={loginId}
-                            placeholder="undefined@null.zero"
+                            id="emailInput"
+                            placeholder="Insert EMAIL for registration or log in"
                             value={this.state.email}
                             onChange={this.onChangeHandler}
                         />
                     </div>
                 </div>
                 <button
-                    type="button"
+                    type="submit"
                     className="btn btn-success btn-lg"
                     onClick={this.onSubmit}
+                    disabled={!this.state.valid}
                 >
                     Log in
                 </button>
                 &nbsp;&nbsp;&nbsp;
                 <button
-                    type="button"
+                    type="submit"
                     className="btn btn-success btn-lg"
                     onClick={this.onSubmitRegistration}
+                    disabled={!this.state.valid}
                 >
                     Register new account
                 </button>

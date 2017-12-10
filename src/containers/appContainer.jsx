@@ -8,7 +8,7 @@ import {MessageInput} from '../containers-redux/messages/MessageInput.jsx';
 import {Errors} from '../containers-redux/shared/Errors.jsx';
 import {LOGGED_USER_EMAIL} from '../constants/localStorageKeys';
 
-class ChannelContainer extends Component {
+class AppContainer extends Component {
     constructor(props) {
         super(props);
     }
@@ -43,7 +43,7 @@ class ChannelContainer extends Component {
     }
 }
 
-ChannelContainer.propTypes = {
+AppContainer.propTypes = {
     email: PropTypes.string.isRequired,
     actualChannel: PropTypes.object,
     isEditing: PropTypes.bool.isRequired,
@@ -58,7 +58,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-})(ChannelContainer);
+})(AppContainer);
 
 
 const msgStyle = {
