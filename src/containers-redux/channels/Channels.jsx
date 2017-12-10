@@ -5,6 +5,7 @@ import {addNewChannel} from '../../actions/channel/addNewChannel';
 import {removeSelectedChannel} from '../../actions/channel/removeSelectedChannel';
 import {prepareMessagesList} from '../../actions/message/prepareMessagesList';
 import {fetchUserDetails} from '../../actions/profile/fetchUserDetails';
+import {startEditingChannel} from '../../actions/channel/actionCreators';
 
 
 const mapStateToProps = (state) => ({
@@ -16,7 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
     fetchUser: () => dispatch(fetchUserDetails()),
     onSubmitChannel: (channel) => dispatch(addNewChannel(channel)),
     onClickDelete: (channelId) => dispatch(removeSelectedChannel(channelId)),
-    onSelectChannel: (channel) => dispatch(prepareMessagesList(channel))
+    onSelectChannel: (channel) => dispatch(prepareMessagesList(channel)),
+    startEditing: () => dispatch(startEditingChannel())
 });
 
 const stateEnhancer = connect(mapStateToProps, mapDispatchToProps);

@@ -1,7 +1,7 @@
 import {API_APP_URI} from '../../constants/api';
 import {validateResponse} from '../../utils/api/validateResponse';
 
-export const uploadChannel = (token, channel, newName) =>
+export const updateExistingChannel = (token, channel, newName, users) =>
     fetch(
         API_APP_URI,
         {
@@ -21,7 +21,7 @@ export const uploadChannel = (token, channel, newName) =>
                             'name': newName,
                             'customData': JSON.stringify({
                                 'owner': channel.customData.owner,
-                                'users': channel.customData.users,
+                                'users': users,
                             })
                         }
                     }

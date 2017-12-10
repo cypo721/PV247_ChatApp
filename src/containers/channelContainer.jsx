@@ -32,7 +32,7 @@ class ChannelContainer extends Component {
                             <div style={{height: '90%'}}>
                                 <Messages/>
                             </div>
-                            <div style={{height: '10%'}}>
+                            <div style={{height: '10%', display: this.props.isEditing? 'none': ''}}>
                                 <MessageInput/>
                             </div>
                         </div>
@@ -45,13 +45,15 @@ class ChannelContainer extends Component {
 
 ChannelContainer.propTypes = {
     email: PropTypes.string.isRequired,
-    actualChannel: PropTypes.object
+    actualChannel: PropTypes.object,
+    isEditing: PropTypes.bool.isRequired,
 };
 
 function mapStateToProps(state) {
     return {
         email: state.shared.email || localStorage.getItem(LOGGED_USER_EMAIL),
         actualChannel: state.application.actualChannel || {},
+        isEditing: state.application.isEditingChannel
     };
 }
 

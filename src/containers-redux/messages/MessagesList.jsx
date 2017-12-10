@@ -6,6 +6,7 @@ import {updateVotesOfMessage} from '../../actions/message/updateVotesOfMessage';
 
 const mapStateToProps = (state) => ({
     messages: state.application.messages,
+    isEditingChannel: state.application.isEditingChannel
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -17,6 +17,7 @@ class Channels extends React.PureComponent {
         onSubmitChannel: PropTypes.func.isRequired,
         onClickDelete: PropTypes.func.isRequired,
         onSelectChannel: PropTypes.func.isRequired,
+        startEditing: PropTypes.func.isRequired
     };
 
     componentWillMount() {
@@ -56,12 +57,19 @@ class Channels extends React.PureComponent {
                     {this.props.channels.map(channel =>
                         <p className={channel.isSelected? 'active' : ''}key={channel.id} style={{ display: 'flex', justifyContent: 'space-between'}} onClick={() => this.onSelectChannel(channel)}>
                             <span># {channel.name}</span>
-                            <span style={{ width: '20px'}}>
+                            <span style={{ width: '40px', display: 'flex'}}>
                                 <button style={{ display: (channel.customData.owner === localStorage.getItem(LOGGED_USER_EMAIL))? '' : 'none'}}
                                     className="btn btn-danger btn-xs"
                                     onClick={() => this.onClickDelete(channel.id)}
                                     hidden
+                                    title="Delete"
                                 ><span className="glyphicon glyphicon-trash"></span></button>
+                                <button style={{ display: (channel.customData.owner === localStorage.getItem(LOGGED_USER_EMAIL))? '' : 'none'}}
+                                    className="btn btn-success btn-xs"
+                                    onClick={this.onEditClick}
+                                    hidden
+                                    title="Edit"
+                                ><span className="glyphicon glyphicon-edit"></span></button>
                             </span>
                         </p>)
                     }
@@ -76,6 +84,7 @@ class Channels extends React.PureComponent {
     }
     onClickDelete = (channelId) => {this.props.onClickDelete(channelId);}
     onSelectChannel = (channel) => {this.props.onSelectChannel(channel);}
+    onEditClick = () => {this.props.startEditing();}
 }
 
 export {Channels};

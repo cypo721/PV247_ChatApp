@@ -1,6 +1,6 @@
 import {
-    CHANNEL_INVATE_USER, CHANNEL_UPDATE_NAME, CHANNEL_UPDATE_SELECTION, MARK_SELECTED_CHANNEL,
-    START_CREATING_CHANNEL, START_REMOVING_CHANNEL
+    CHANNEL_INVATE_USER, CHANNEL_UPDATE_NAME, CHANNEL_UPDATE_SELECTION, FINISH_EDITING_CHANNEL, MARK_SELECTED_CHANNEL,
+    START_CREATING_CHANNEL, START_EDITING_CHANNEL, START_REMOVING_CHANNEL, START_UPDATING_CHANNEL
 } from '../../constants/actionTypes';
 import * as actionTypes from '../../constants/actionTypes';
 import {errorActionFactory} from '../../utils/errorActionFactory';
@@ -25,6 +25,18 @@ export const invateUser = () => ({
 
 export const startCreatingChannel = () => ({
     type: START_CREATING_CHANNEL,
+});
+
+export const startUpdatingChannel = () => ({
+    type: START_UPDATING_CHANNEL,
+});
+
+export const startEditingChannel = () => ({
+    type: START_EDITING_CHANNEL,
+});
+
+export const finishEditingChannel = () => ({
+    type: FINISH_EDITING_CHANNEL,
 });
 
 export const startRemovingChannel = () => ({
