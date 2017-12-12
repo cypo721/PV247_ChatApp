@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
+import {prepareMessagesList} from '../../actions/message/prepareMessagesList';
 
 class Channels extends React.PureComponent {
     constructor(props) {

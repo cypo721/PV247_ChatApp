@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 import {ChannelEdit} from '../../containers-redux/channels/ChannelEdit.jsx';
+import {prepareMessagesList} from '../../actions/message/prepareMessagesList';
 
 class Messages extends React.PureComponent {
     constructor(props) {
@@ -20,10 +21,12 @@ class Messages extends React.PureComponent {
         onClickDownvote: PropTypes.func.isRequired,
         onClickDeleteVote: PropTypes.func.isRequired,
         isEditingChannel: PropTypes.bool.isRequired,
+        actualChannel: PropTypes.object.isRequired
     };
 
     // componentWillMount() {
-    //     this.props.fetchData();
+    //     //this.props.fetchData();
+    //     setTimeout(() => { prepareMessagesList(this.props.actualChannel); }, 30000);
     // }
 
 
