@@ -1,7 +1,7 @@
 import {dismissError, failAuthentication, receiveAppData, startFetchingData} from '../shared/actionCreators';
 import {FAILED_FETCH_APP_DATA_MESSAGE, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import { fetchAppData } from '../../utils/api/fetchAppData';
-import {convertFromServerData} from './applicationData';
+import {convertFromServerData} from '../../utils/api/conversions/applicationData';
 
 export const initializeApp = () =>
     (dispatch , getState) => {

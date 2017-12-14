@@ -8,7 +8,7 @@ import {
     failedUpdatingMessage, removeVote,
     startUpdatingMessage, upvote
 } from './actionCreators';
-import {convertNewMessage} from './messageData';
+import {convertNewMessage} from '../../utils/api/conversions/messageData';
 import {votingMessage} from './api/votingMessage';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 

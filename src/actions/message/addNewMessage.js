@@ -5,7 +5,7 @@ import {
 } from '../../constants/uiConstants';
 import {addCreatedMessage, failedAddingMessage, startCreatingMessage} from './actionCreators';
 import {uploadMessage} from './api/uploadMessage';
-import {convertNewMessage} from './messageData';
+import {convertNewMessage} from '../../utils/api/conversions/messageData';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const addNewMessage = (message) =>

@@ -3,7 +3,7 @@ import {loadMessages} from './api/loadMessagesOfChannel';
 import {dismissError} from '../shared/actionCreators';
 import {FAILED_FETCHING_MESSAGE, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import {failedFetchingMessages, loadMessagesOfChannel} from './actionCreators';
-import {convertFromServerMessages} from './messageData';
+import {convertFromServerMessages} from '../../utils/api/conversions/messageData';
 
 export const prepareMessagesList = (channel) =>
     (dispatch, getState) => {

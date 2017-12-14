@@ -6,15 +6,13 @@ import {
     dismissError,
 } from '../shared/actionCreators';
 import { performAuthorizedRequest } from './performAuthorizedRequest';
-import { fetchFileUpload } from '../../utils/api/fetchFileUpload';
-import { uploadUserDetails } from './uploadUserDetails';
-import { fetchUserAvatar } from './fetchUserAvatar';
+//import { fetchFileUpload } from '../../utils/api/fetchFileUpload';
 import {
     FAILED_UPDATE_AVATAR_MESSAGE,
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
 
-export const uploadUserAvatar = (file) =>
+export const uploadUserAvatarFactory = ({fetchFileUpload, uploadUserDetails, fetchUserAvatar}) => (file) =>
     async (dispatch, getState) => {
         dispatch(startUploadingProfileAvatar());
 

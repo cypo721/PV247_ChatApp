@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { Details } from '../../components/profile/Details.jsx';
-import { uploadUserDetails } from '../../actions/profile/uploadUserDetails';
+//import { uploadUserDetails } from '../../actions/profile/uploadUserDetails';
+import {uploadUserDetails} from '../../actions/profile';
 import { DETAILS_FORM_NAME } from '../../constants/formNames';
 
 const mapStateToProps = (state) => ({

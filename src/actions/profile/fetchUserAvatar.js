@@ -8,7 +8,7 @@ import { fetchReceive } from '../../utils/api/fetchReceive';
 import { FAILED_FETCH_AVATAR_MESSAGE } from '../../constants/uiConstants';
 import { performAuthorizedRequest } from './performAuthorizedRequest';
 
-export const fetchUserAvatar = (avatarId) =>
+export const fetchUserAvatarFactory = (fetchReceive) => (avatarId) =>
     async (dispatch, getState) => {
         dispatch(startFetchingProfileAvatar());
 
@@ -18,7 +18,7 @@ export const fetchUserAvatar = (avatarId) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
                 const avatarUri = await fetchReceive(requestUri, authToken);
-                dispatch(updateProfileaAvatar(avatarUri));
+                return dispatch(updateProfileaAvatar(avatarUri));
             });
         }
         catch (error) {

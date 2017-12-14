@@ -10,7 +10,7 @@ import {
     createApiUserUri
 } from '../../constants/api';
 import { dismissError } from '../shared/actionCreators';
-import { fetchRequest } from '../../utils/api/fetchRequest';
+//import { fetchRequest } from '../../utils/api/fetchRequest';
 import {
     convertFromServerDetails,
     convertToServerDetails
@@ -23,7 +23,7 @@ import {
 } from '../../constants/uiConstants';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
-export const uploadUserDetails = (details) =>
+export const uploadUserDetailsFactory = (fetchRequest) => (details) =>
     async (dispatch, getState) => {
         dispatch(startSubmit(DETAILS_FORM_NAME));
 

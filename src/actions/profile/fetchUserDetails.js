@@ -11,16 +11,14 @@ import {
     failAuthentication,
     invalidateToken
 } from '../shared/actionCreators';
-import { fetchReceive } from '../../utils/api/fetchReceive';
 import { convertFromServerDetails } from '../../utils/api/conversions/profileDetails';
 import {
     EXPIRED_AUTHENTICATION_MESSAGE,
     FAILED_FETCH_DETAILS_MESSAGE
 } from '../../constants/uiConstants';
-import { fetchUserAvatar } from './fetchUserAvatar';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
-export const fetchUserDetails = () =>
+export const fetchUserDetailsFactory = ({ fetchReceive, fetchUserAvatar }) => () =>
     (dispatch, getState) => {
         dispatch(startFetchingProfileDetails());
         dispatch(startFetchingProfileAvatar());
@@ -30,7 +28,7 @@ export const fetchUserDetails = () =>
 
         return fetchReceive(requestUri, authToken)
             .then((serverDetails) => dispatch(updateProfileDetails(convertFromServerDetails(serverDetails))))
-            .then(({ payload: {details: { avatarId } = {} } = {} }) => avatarId && dispatch(fetchUserAvatar(avatarId)))
+            .then(({ payload: {details: { avatarId } = {} } = {} }) => avatarId && fetchUserAvatar(avatarId))
             .catch((error) => {
                 if (error.statusCode === 401) {
                     dispatch(invalidateToken());

@@ -4,7 +4,7 @@ import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
 import {channelSelection, failedUpdatingChannel, finishEditingChannel, startUpdatingChannel} from './actionCreators';
-import {convertFromServerData} from './applicationData';
+import {convertFromServerData} from '../../utils/api/conversions/applicationData';
 import {updateExistingChannel} from './api/updateExistingChannel';
 
 export const updateChannel = (newName, users) =>
