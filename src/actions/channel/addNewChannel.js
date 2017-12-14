@@ -5,7 +5,7 @@ import {uploadChannel} from './api/uploadChannel';
 import {convertFromServerData} from '../../utils/api/conversions/applicationData';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
-export const addNewChannel = (channel) =>
+export const addNewChannelFactory = ({uploadChannel, convertFromServerData}) => (channel) =>
     (dispatch, getState) => {
 
         dispatch(startCreatingChannel());

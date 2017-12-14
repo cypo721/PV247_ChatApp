@@ -7,7 +7,7 @@ import {channelSelection, failedUpdatingChannel, finishEditingChannel, startUpda
 import {convertFromServerData} from '../../utils/api/conversions/applicationData';
 import {updateExistingChannel} from './api/updateExistingChannel';
 
-export const updateChannel = (newName, users) =>
+export const updateChannelFactory = ({updateExistingChannel, convertFromServerData}) => (newName, users) =>
     (dispatch, getState) => {
 
         dispatch(startUpdatingChannel());

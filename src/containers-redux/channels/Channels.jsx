@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import { Channels } from '../../components/channel/Channels.jsx';
 import {initializeApp} from '../../actions/channel/initializeApp';
-import {addNewChannel} from '../../actions/channel/addNewChannel';
-import {removeSelectedChannel} from '../../actions/channel/removeSelectedChannel';
+//import {addNewChannel} from '../../actions/channel/addNewChannel';
+import {addNewChannel} from '../../actions/channel/';
+//import {removeSelectedChannel} from '../../actions/channel/removeSelectedChannel';
+import {removeSelectedChannel} from '../../actions/channel/';
 import {prepareMessagesList} from '../../actions/message/prepareMessagesList';
 import {fetchUserDetails} from '../../actions/profile/';
 import {startEditingChannel} from '../../actions/channel/actionCreators';

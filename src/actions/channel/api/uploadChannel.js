@@ -1,7 +1,7 @@
 import {API_APP_URI} from '../../../constants/api';
 import {validateResponse} from '../../../utils/api/validateResponse';
 
-export const uploadChannel = (token, owner, name) =>
+export const uploadChannelFactory = (fetch) => (token, owner, name) =>
     fetch(
         API_APP_URI,
         {

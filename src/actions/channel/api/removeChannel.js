@@ -1,7 +1,7 @@
 import {API_APP_URI} from '../../../constants/api';
 import {validateResponse} from '../../../utils/api/validateResponse';
 
-export const removeChannel = (token, channelId) =>
+export const removeChannelFactory = (fetch) => (token, channelId) =>
     fetch(
         API_APP_URI,
         {

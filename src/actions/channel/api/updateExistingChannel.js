@@ -1,7 +1,7 @@
 import {API_APP_URI} from '../../../constants/api';
 import {validateResponse} from '../../../utils/api/validateResponse';
 
-export const updateExistingChannel = (token, channel, newName, users) =>
+export const updateExistingChannelFactory = (fetch) => (token, channel, newName, users) =>
     fetch(
         API_APP_URI,
         {
