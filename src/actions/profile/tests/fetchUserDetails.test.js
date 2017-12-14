@@ -29,7 +29,7 @@ test('dispatches actions in correct order', async done => {
 
     expect(dispatch).toBeCalledWith(startFetchingProfileDetails());
     expect(dispatch).toBeCalledWith(startFetchingProfileAvatar());
-    expect(dispatch).toHaveBeenLastCalledWith(updateProfileDetails(expectedDetails));
+    expect(dispatch).toBeCalledWith(updateProfileDetails(expectedDetails));
     expect(fetchUserAvatar).toHaveBeenLastCalledWith(expectedAvatarId);
     done();
 });

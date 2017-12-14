@@ -4,7 +4,7 @@ import {initializeApp} from '../../actions/channel/initializeApp';
 import {addNewChannel} from '../../actions/channel/addNewChannel';
 import {removeSelectedChannel} from '../../actions/channel/removeSelectedChannel';
 import {prepareMessagesList} from '../../actions/message/prepareMessagesList';
-import {fetchUserDetails} from '../../actions/profile/fetchUserDetails';
+import {fetchUserDetails} from '../../actions/profile/';
 import {startEditingChannel} from '../../actions/channel/actionCreators';
 
 

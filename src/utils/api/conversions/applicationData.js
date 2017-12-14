@@ -7,8 +7,3 @@ export const convertFromServerData = (data) => ({
         isSelected: false
     }))
 });
-
-export const convertToServerData = (data) => JSON.stringify({
-    ...data,
-    id: data.id,
-});

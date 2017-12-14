@@ -18,7 +18,7 @@ export const fetchUserAvatarFactory = (fetchReceive) => (avatarId) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
                 const avatarUri = await fetchReceive(requestUri, authToken);
-                return dispatch(updateProfileaAvatar(avatarUri));
+                dispatch(updateProfileaAvatar(avatarUri));
             });
         }
         catch (error) {
