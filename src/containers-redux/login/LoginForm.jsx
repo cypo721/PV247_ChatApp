@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LoginForm } from '../../components/login/LoginForm.jsx';
-import { authenticateUser } from '../../actions/shared/authenticateUser';
+import { authenticateUser } from '../../actions/shared';
 import {registerUserAccount} from '../../actions/shared/registerUser';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

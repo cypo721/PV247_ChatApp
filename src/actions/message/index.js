@@ -18,5 +18,5 @@ const votingMessage = votingMessageFactory(fetch);
 export const updateVotesOfMessage = updateVotesOfMessageFactory({votingMessage, convertNewMessage});
 
 const loadMessages = loadMessagesFactory(fetch);
-export const prepareMessagesList = prepareMessagesListFactory({loadMessages, convertFromServerMessages})
+export const prepareMessagesList = prepareMessagesListFactory({loadMessages, convertFromServerMessages});
 

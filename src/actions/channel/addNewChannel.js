@@ -1,8 +1,7 @@
 import {dismissError, receiveAppData} from '../shared/actionCreators';
 import {FAILED_ADDING_CHANNEL, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import {failedAddingChannel, startCreatingChannel} from './actionCreators';
-import {uploadChannel} from './api/uploadChannel';
-import {convertFromServerData} from '../../utils/api/conversions/applicationData';
+//import {uploadChannel} from './api/uploadChannel';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
 export const addNewChannelFactory = ({uploadChannel, convertFromServerData}) => (channel) =>

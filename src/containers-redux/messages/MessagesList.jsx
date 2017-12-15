@@ -4,6 +4,7 @@ import {Messages} from '../../components/message/MessageList.jsx';
 import {deleteSelectedMessage} from '../../actions/message';
 //import {updateVotesOfMessage} from '../../actions/message/updateVotesOfMessage';
 import {updateVotesOfMessage} from '../../actions/message';
+import {prepareMessagesList} from '../../actions/message/index';
 
 
 const mapStateToProps = (state) => ({
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
     onClickUpvote: (message) => dispatch(updateVotesOfMessage(message, 1)),
     onClickDownvote: (message) => dispatch(updateVotesOfMessage(message, -1)),
     onClickDeleteVote: (message) => dispatch(updateVotesOfMessage(message, 0)),
+    refreshMsgs: (channel) => dispatch(prepareMessagesList(channel))
 });
 
 const stateEnhancer = connect(mapStateToProps, mapDispatchToProps);

@@ -8,13 +8,13 @@ import {
     startAuthentication
 } from './actionCreators';
 import * as keys from '../../constants/localStorageKeys';
-import { fetchAuthToken } from '../../utils/api/fetchAuthToken';
+//import { fetchAuthToken } from '../../utils/api/fetchAuthToken';
 import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR,
     FAILED_AUTHENTICATION_MESSAGE
 } from '../../constants/uiConstants';
 
-export const authenticateUser = (destinationLocation, loginId) =>
+export const authenticateUserFactory = (fetchAuthToken) => (destinationLocation, loginId) =>
     (dispatch) => {
         dispatch(startAuthentication());
 

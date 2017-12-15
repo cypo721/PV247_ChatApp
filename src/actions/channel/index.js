@@ -13,4 +13,4 @@ const updateExistingChannel = updateExistingChannelFactory(fetch);
 export const updateChannel = updateChannelFactory({updateExistingChannel, convertFromServerData});
 
 const uploadChannel = uploadChannelFactory(fetch);
-export const addNewChannel = addNewChannelFactory({uploadChannel, convertFromServerData})
+export const addNewChannel = addNewChannelFactory({uploadChannel, convertFromServerData});
