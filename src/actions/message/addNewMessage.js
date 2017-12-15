@@ -4,11 +4,11 @@ import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
 import {addCreatedMessage, failedAddingMessage, startCreatingMessage} from './actionCreators';
-import {uploadMessage} from './api/uploadMessage';
-import {convertNewMessage} from '../../utils/api/conversions/messageData';
+//import {uploadMessage} from './api/uploadMessage';
+//import {convertNewMessage} from '../../utils/api/conversions/messageData';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
-export const addNewMessage = (message) =>
+export const addNewMessageFactory = ({uploadMessage, convertNewMessage}) => (message) =>
     (dispatch, getState) => {
 
         dispatch(startCreatingMessage());

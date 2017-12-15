@@ -1,7 +1,7 @@
 import {createApiMessageUri} from '../../../constants/api';
 import {validateResponse} from '../../../utils/api/validateResponse';
 
-export const uploadMessage = (token, text, channelId, avatarUri, nick) =>
+export const uploadMessageFactory = (fetch) => (token, text, channelId, avatarUri, nick) =>
     fetch(
         createApiMessageUri(channelId),
         {

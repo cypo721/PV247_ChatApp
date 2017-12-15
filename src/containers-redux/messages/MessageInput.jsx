@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {MessageInput} from '../../components/message/MessageInput.jsx';
-import {addNewMessage} from '../../actions/message/addNewMessage';
+import {addNewMessage} from '../../actions/message';
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: (message) => dispatch(addNewMessage(message)),

@@ -1,7 +1,7 @@
 import {validateResponse} from '../../../utils/api/validateResponse';
 import {createApiMessageUriConcrete} from '../../../constants/api';
 
-export const votingMessage = (token, channelId, message, up, down) =>
+export const votingMessageFactory = (fetch) => (token, channelId, message, up, down) =>
     fetch(
         createApiMessageUriConcrete(channelId, message.id),
         {

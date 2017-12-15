@@ -8,11 +8,11 @@ import {
     failedUpdatingMessage, removeVote,
     startUpdatingMessage, upvote
 } from './actionCreators';
-import {convertNewMessage} from '../../utils/api/conversions/messageData';
-import {votingMessage} from './api/votingMessage';
+//import {convertNewMessage} from '../../utils/api/conversions/messageData';
+//import {votingMessage} from './api/votingMessage';
 import {LOGGED_USER_EMAIL} from '../../constants/localStorageKeys';
 
-export const updateVotesOfMessage = (message, vote) =>
+export const updateVotesOfMessageFactory = ({votingMessage, convertNewMessage}) => (message, vote) =>
     (dispatch, getState) => {
 
         dispatch(startUpdatingMessage());
@@ -23,14 +23,14 @@ export const updateVotesOfMessage = (message, vote) =>
         var down = message.customData.down;
 
         if (vote == 1) {
-            up = up.concat(localStorage.getItem(LOGGED_USER_EMAIL));
+            up = up.concat(getState().shared.email || localStorage.getItem(LOGGED_USER_EMAIL));
         }
         if (vote == -1) {
-            down = down.concat(localStorage.getItem(LOGGED_USER_EMAIL));
+            down = down.concat(getState().shared.email || localStorage.getItem(LOGGED_USER_EMAIL));
         }
         if (vote == 0) {
-            up = up.filter(u => u !== localStorage.getItem(LOGGED_USER_EMAIL));
-            down = down.filter( u => u !== localStorage.getItem(LOGGED_USER_EMAIL));
+            up = up.filter(u => u !== (getState().shared.email ||localStorage.getItem(LOGGED_USER_EMAIL)));
+            down = down.filter( u => u !== (getState().shared.email ||localStorage.getItem(LOGGED_USER_EMAIL)));
         }
 
 
@@ -40,13 +40,13 @@ export const updateVotesOfMessage = (message, vote) =>
                 //dispatch(updateMessage(convertedMsg, index));
                 switch(vote){
                     case 1:
-                        dispatch(upvote(convertedMsg, localStorage.getItem(LOGGED_USER_EMAIL)));
+                        dispatch(upvote(convertedMsg, getState().shared.email ||localStorage.getItem(LOGGED_USER_EMAIL)));
                         break;
                     case -1:
-                        dispatch(downvote(convertedMsg,localStorage.getItem(LOGGED_USER_EMAIL)));
+                        dispatch(downvote(convertedMsg,getState().shared.email ||localStorage.getItem(LOGGED_USER_EMAIL)));
                         break;
                     case 0:
-                        dispatch(removeVote(convertedMsg, localStorage.getItem(LOGGED_USER_EMAIL)));
+                        dispatch(removeVote(convertedMsg, getState().shared.email ||localStorage.getItem(LOGGED_USER_EMAIL)));
                         break;
                     default:
                         null;

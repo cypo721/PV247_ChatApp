@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import {Messages} from '../../components/message/MessageList.jsx';
-import {deleteSelectedMessage} from '../../actions/message/deleteSelectedMessage';
-import {updateVotesOfMessage} from '../../actions/message/updateVotesOfMessage';
+//import {deleteSelectedMessage} from '../../actions/message/deleteSelectedMessage';
+import {deleteSelectedMessage} from '../../actions/message';
+//import {updateVotesOfMessage} from '../../actions/message/updateVotesOfMessage';
+import {updateVotesOfMessage} from '../../actions/message';
 
 
 const mapStateToProps = (state) => ({

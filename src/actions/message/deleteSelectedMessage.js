@@ -7,9 +7,9 @@ import {
     failedRemovingMessage, removeMessage,
     startRemovingMessage
 } from './actionCreators';
-import {deleteMessage} from './api/deleteMessage';
+//mport {deleteMessage} from './api/deleteMessage';
 
-export const deleteSelectedMessage = (messageId) =>
+export const deleteSelectedMessageFactory = (deleteMessage) => (messageId) =>
     (dispatch, getState) => {
 
         dispatch(startRemovingMessage());

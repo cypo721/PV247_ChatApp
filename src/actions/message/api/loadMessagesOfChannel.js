@@ -1,7 +1,7 @@
 import {createApiMessageUri} from '../../../constants/api';
 import {validateResponse} from '../../../utils/api/validateResponse';
 
-export const loadMessages = (token, channelId) =>
+export const loadMessagesFactory = (fetch) => (token, channelId) =>
     fetch(
         createApiMessageUri(channelId),
         {

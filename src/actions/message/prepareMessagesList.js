@@ -1,11 +1,10 @@
 import {channelSelection, markSelectedChannel} from '../channel/actionCreators';
-import {loadMessages} from './api/loadMessagesOfChannel';
+//import {loadMessages} from './api/loadMessagesOfChannel';
 import {dismissError} from '../shared/actionCreators';
 import {FAILED_FETCHING_MESSAGE, MILISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import {failedFetchingMessages, loadMessagesOfChannel} from './actionCreators';
-import {convertFromServerMessages} from '../../utils/api/conversions/messageData';
 
-export const prepareMessagesList = (channel) =>
+export const prepareMessagesListFactory = ({loadMessages, convertFromServerMessages}) => (channel) =>
     (dispatch, getState) => {
         dispatch(channelSelection(channel));
         dispatch(markSelectedChannel(channel));

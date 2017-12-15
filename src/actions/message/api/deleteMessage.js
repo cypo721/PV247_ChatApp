@@ -1,7 +1,7 @@
 import {createApiMessageUriConcrete} from '../../../constants/api';
 import {validateDelete} from '../../../utils/api/validateDelete';
 
-export const deleteMessage = (token, messageId, channelId) =>
+export const deleteMessageFactory = (fetch) => (token, messageId, channelId) =>
     fetch(
         createApiMessageUriConcrete(channelId, messageId),
         {

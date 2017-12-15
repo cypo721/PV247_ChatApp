@@ -58,6 +58,9 @@
     "build": "webpack",
     "build-production": "set NODE_ENV=production&& webpack",
     "start": "start app.html & webpack -w",
-    "test": "jest"
+    "test": "jest --config=./config.json"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile":"./src/actions/message/tests/browseMocks.js"
   }
 }
