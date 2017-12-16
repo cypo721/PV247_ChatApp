@@ -1,5 +1,6 @@
 const API_URI = 'https://pv247messaging.azurewebsites.net/api';
-const API_APP_ID = 'e01430f8-966d-4935-9911-cbdef88a954a';
+//const API_APP_ID = 'e01430f8-966d-4935-9911-cbdef88a954a'; //dev appka
+const API_APP_ID = '2669a2fd-e5ac-4cbe-ba88-82eb6d44c3f3'; // nova appka - ok data
 //const API_APP_ID = 'f1a58775-114f-46c0-ab5b-9712dac5a285'; appka z hodiny
 
 export const API_AUTH_URI = `${API_URI}/auth`;
